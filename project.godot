@@ -1,0 +1,64 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Disgraced Space Druid"
+config/description="Combine exotic, absurd ingredients into cosmic brews to escape crippling gambling debt."
+config/version="0.1"
+run/main_scene="uid://q3362xrshrsu"
+config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[audio]
+
+buses/default_bus_layout="uid://dsgfgjr67uiav"
+
+[autoload]
+
+ScenesManager="*uid://dttnxbrn83jg5"
+MusicManager="*uid://m6ppdobe31o3"
+GameData="*uid://c6vensvjc2kmx"
+SavesManager="*uid://bqphpexlqus52"
+DebugInfo="*uid://de8n5gdg7gtbr"
+PopupManager="*uid://b63w0p3ooheuj"
+
+[display]
+
+window/size/viewport_width=272
+window/size/viewport_height=192
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep_height"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/html5_file_dialog/plugin.cfg")
+
+[gui]
+
+theme/default_font_antialiasing=0
+theme/default_font_subpixel_positioning=0
+theme/custom="uid://d2s1eqi0btoeb"
+theme/custom_font="uid://x61fcsihg35g"
+
+[internationalization]
+
+locale/translation_add_builtin_strings_to_pot=true
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

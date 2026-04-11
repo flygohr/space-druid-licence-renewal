@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://de8n5gdg7gtbr"]
+
+[ext_resource type="Script" uid="uid://ct2fs6u8wcidq" path="res://autoloads/debugger_scene/debugger.gd" id="1_hkqyx"]
+
+[node name="Debugger" type="Node2D" unique_id=315184782]
+script = ExtResource("1_hkqyx")
+
+[node name="DebuggerLabel" type="Label" parent="." unique_id=1774007302]
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 48.0
+offset_bottom = 29.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.9607843, 0, 0.30980393, 1)
+text = "Label"
+metadata/_edit_use_anchors_ = true
