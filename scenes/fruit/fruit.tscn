@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b1j6udrtmx3w6"]
+
+[ext_resource type="Texture2D" uid="uid://dtwblcpbko0mw" path="res://icon.svg" id="1_8dwgx"]
+[ext_resource type="Script" uid="uid://irinjgntsrry" path="res://scenes/fruit/fruit.gd" id="1_luid3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_luid3"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6dk3"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2wgk"]
+radius = 4.0
+
+[node name="Fruit" type="Node2D" unique_id=328631459]
+script = ExtResource("1_luid3")
+
+[node name="SpriteFull" type="Sprite2D" parent="." unique_id=107178803]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8dwgx")
+
+[node name="FruitCollisionMeh" type="Area2D" parent="." unique_id=407032566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitCollisionMeh" unique_id=978661472]
+shape = SubResource("CircleShape2D_luid3")
+debug_color = Color(0.99852985, 0, 0.20469362, 0.41960785)
+
+[node name="FruitCollisionGood" type="Area2D" parent="." unique_id=1166162214]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitCollisionGood" unique_id=459582909]
+shape = SubResource("CircleShape2D_f6dk3")
+debug_color = Color(0.57362586, 0.5560909, 3.85046e-07, 0.41960785)
+
+[node name="FruitCollisionPerfect" type="Area2D" parent="." unique_id=23364737]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FruitCollisionPerfect" unique_id=1147669946]
+shape = SubResource("CircleShape2D_h2wgk")
+debug_color = Color(0, 0.64607304, 0.25283915, 0.41960785)
+
+[connection signal="area_entered" from="FruitCollisionMeh" to="." method="_on_fruit_collision_meh_area_entered"]
+[connection signal="area_entered" from="FruitCollisionGood" to="." method="_on_fruit_collision_good_area_entered"]
+[connection signal="area_entered" from="FruitCollisionPerfect" to="." method="_on_fruit_collision_perfect_area_entered"]

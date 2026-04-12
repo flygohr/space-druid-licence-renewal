@@ -1,7 +1,7 @@
 ### Godot Wild Jam #92: BREWING
-My idea: Disgraced Space Druid
+My idea: Space Druid License Renewal
 
-Pitch: Combine exotic, absurd ingredients into cosmic brews to escape crippling gambling debt.
+Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licence.
 
 ### Credits:
 - Font: https://rurr.itch.io/tremolo-mono

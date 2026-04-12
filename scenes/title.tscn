@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://q3362xrshrsu"]
 
 [ext_resource type="Script" uid="uid://c3lyi851kms3q" path="res://scenes/title.gd" id="1_4ignj"]
+[ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_p6dhs"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="2_wosw1"]
 
 [node name="Ttitle" type="Node2D" unique_id=189399056]
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_p6dhs")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16

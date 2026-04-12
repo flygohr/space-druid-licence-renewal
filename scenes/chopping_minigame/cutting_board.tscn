@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dy3gjpgwi5fym"]
+
+[ext_resource type="Script" uid="uid://cp6hy7b7li7ji" path="res://scenes/chopping_minigame/cutting_board.gd" id="1_y6xj3"]
+
+[node name="Cutting board" type="Node2D" unique_id=264996476]
+script = ExtResource("1_y6xj3")
+
+[node name="BoardArea" type="ColorRect" parent="." unique_id=1639097384]
+visible = false
+offset_right = 240.0
+offset_bottom = 96.0
