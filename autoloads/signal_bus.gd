@@ -4,6 +4,9 @@ extends Node
 
 @warning_ignore_start("unused_signal")
 
+signal pause_game
+signal unpause_game
+
 signal laser_finished_firing
 signal chopping_fruit_amt_changed(amt: int)
 signal chopping_happened(amt:int)

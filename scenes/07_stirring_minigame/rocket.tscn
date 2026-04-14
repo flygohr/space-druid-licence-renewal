@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://pcxlkctbxhxq"]
 
-[ext_resource type="Script" uid="uid://du0ys55cxljmx" path="res://scenes/stirring_minigame/rocket.gd" id="1_k1m8p"]
+[ext_resource type="Script" uid="uid://du0ys55cxljmx" path="res://scenes/07_stirring_minigame/rocket.gd" id="1_k1m8p"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50rgb"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -13,8 +13,8 @@ script = ExtResource("1_k1m8p")
 
 [node name="FlameSprite" type="Sprite2D" parent="." unique_id=18421476]
 modulate = Color(0.87058824, 0.5411765, 0, 0.56078434)
-position = Vector2(80, 88.00001)
-scale = Vector2(0.5, 1.6250001)
+position = Vector2(72, 88)
+scale = Vector2(0.375, 1.1249999)
 texture = SubResource("CompressedTexture2D_50rgb")
 
 [node name="Area2D" type="Area2D" parent="FlameSprite" unique_id=1255122482 groups=["RocketFire"]]
@@ -26,6 +26,6 @@ shape = SubResource("RectangleShape2D_50rgb")
 offset_left = 16.0
 offset_top = 16.0
 offset_right = 32.0
-offset_bottom = 176.0
+offset_bottom = 160.0
 value = 100.0
 fill_mode = 3

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dd0id6bppupej"]
 
-[ext_resource type="Script" uid="uid://2n1bmf4e03hw" path="res://scenes/stirring_minigame/stirring_scene.gd" id="1_24vjm"]
-[ext_resource type="PackedScene" uid="uid://bqj261sssx85t" path="res://scenes/stirring_minigame/pot.tscn" id="2_4gllk"]
-[ext_resource type="PackedScene" uid="uid://pcxlkctbxhxq" path="res://scenes/stirring_minigame/rocket.tscn" id="3_gbpbl"]
+[ext_resource type="Script" uid="uid://2n1bmf4e03hw" path="res://scenes/07_stirring_minigame/stirring_scene.gd" id="1_24vjm"]
+[ext_resource type="PackedScene" uid="uid://bqj261sssx85t" path="res://scenes/07_stirring_minigame/pot.tscn" id="2_4gllk"]
+[ext_resource type="PackedScene" uid="uid://pcxlkctbxhxq" path="res://scenes/07_stirring_minigame/rocket.tscn" id="3_gbpbl"]
 
 [node name="StirringScene" type="Node2D" unique_id=1079126123]
 script = ExtResource("1_24vjm")

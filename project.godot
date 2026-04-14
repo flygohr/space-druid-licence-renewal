@@ -28,6 +28,7 @@ GameData="*uid://c6vensvjc2kmx"
 SavesManager="*uid://bqphpexlqus52"
 PopupManager="*uid://b63w0p3ooheuj"
 SignalBus="*uid://cbb3j464d0xix"
+Settings="*uid://cc1yqy62xbprh"
 
 [display]
 

@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cynxr8b5pq2st"]
+
+[ext_resource type="Script" uid="uid://bq36i4emsfwxg" path="res://scenes/06_chopping_minigame/chopping_scene.gd" id="1_47j87"]
+[ext_resource type="PackedScene" uid="uid://b5s0ycwcoxyxa" path="res://scenes/06_chopping_minigame/slider_component.tscn" id="2_snsjb"]
+[ext_resource type="PackedScene" uid="uid://db7kqba0u74ss" path="res://scenes/06_chopping_minigame/laser.tscn" id="3_g44pf"]
+[ext_resource type="PackedScene" uid="uid://dy3gjpgwi5fym" path="res://scenes/06_chopping_minigame/cutting_board.tscn" id="4_6j0pb"]
+[ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/04_fruit_scenes/fruit.tscn" id="5_vwr26"]
+
+[node name="ChoppingMinigame" type="Node2D" unique_id=418510966]
+script = ExtResource("1_47j87")
+
+[node name="TopSlider" parent="." unique_id=1567326803 instance=ExtResource("2_snsjb")]
+position = Vector2(0, 16)
+
+[node name="BottomSlider" parent="." unique_id=1170147702 instance=ExtResource("2_snsjb")]
+position = Vector2(0, 128)
+
+[node name="Laser" parent="." unique_id=859753925 instance=ExtResource("3_g44pf")]
+
+[node name="Cutting board" parent="." unique_id=264996476 instance=ExtResource("4_6j0pb")]
+position = Vector2(0, 48)
+fruit_scene = ExtResource("5_vwr26")
+
+[node name="FruitsLeftLabel" type="Label" parent="." unique_id=1844786514]
+offset_left = -39.0
+offset_right = 45.0
+offset_bottom = 13.0
+text = "FRUITS LEFT: 0"
+
+[node name="GroundedPercentLabel" type="Label" parent="." unique_id=221819366]
+offset_left = 60.0
+offset_right = 144.0
+offset_bottom = 13.0
+text = "GROUNDED: 0%"
+
+[node name="RoundsLeftLabel" type="Label" parent="." unique_id=383065369]
+offset_left = 146.0
+offset_right = 230.0
+offset_bottom = 13.0
+text = "ROUNDS LEFT: 5"

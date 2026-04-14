@@ -41,7 +41,7 @@ func _input(event):
 		minigame_started = true
 		rounds -= 1
 	if event.is_action_pressed("Interact") and !minigame_started and rounds == 0:
-		ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_STIRRING_SCREEN])
+		ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_STIRRING_MINIGAME])
 
 func start_second_slider(coords: Vector2) -> void:
 	top_coords = coords

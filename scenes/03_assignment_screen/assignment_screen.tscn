@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://c8xu04a56il4n"]
 
+[ext_resource type="Script" uid="uid://bcl3in5x6b7hm" path="res://scenes/03_assignment_screen/assignment_screen.gd" id="1_4xqpc"]
 [ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="1_fdenl"]
 [ext_resource type="Texture2D" uid="uid://e7p3ip0kex7y" path="res://assets/images/i-made-this-sick-parchment-texture-for-the-ninepatchrect-v0-vae9j5z9sx4a1.png" id="2_nejio"]
 [ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_r6tvq"]
-[ext_resource type="PackedScene" uid="uid://gxba068c0acp" path="res://scenes/menu_button.tscn" id="3_7c4ic"]
+[ext_resource type="PackedScene" uid="uid://gxba068c0acp" path="res://scenes/00_menu_button/menu_button.tscn" id="3_7c4ic"]
 [ext_resource type="Texture2D" uid="uid://dtwblcpbko0mw" path="res://icon.svg" id="4_tb26x"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="5_tb26x"]
 
 [node name="AssignmentScreen" type="Node2D" unique_id=897812493]
+script = ExtResource("1_4xqpc")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1735294527]
 
@@ -187,3 +189,5 @@ text = "START"
 [node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/StartButton" unique_id=1021131532]
 script = ExtResource("5_tb26x")
 metadata/_custom_type_script = "uid://c3p5hehud2mfn"
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

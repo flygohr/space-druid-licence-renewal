@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://gxba068c0acp"]
 
-[ext_resource type="Script" uid="uid://mlybhoiis65m" path="res://scenes/menu_button.gd" id="1_sd4kj"]
+[ext_resource type="Script" uid="uid://mlybhoiis65m" path="res://scenes/00_menu_button/menu_button.gd" id="1_sd4kj"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="1_xsssc"]
 
 [node name="MenuButton" type="Button" unique_id=607294290]

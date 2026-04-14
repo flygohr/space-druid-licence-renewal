@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dgwvco47ur5ul"]
 
-[ext_resource type="Script" uid="uid://dbsb6q7wxhnei" path="res://scenes/starting_letter/starting_letter.gd" id="1_h1ocp"]
+[ext_resource type="Script" uid="uid://dbsb6q7wxhnei" path="res://scenes/02_starting_letter/starting_letter.gd" id="1_h1ocp"]
 [ext_resource type="Texture2D" uid="uid://e7p3ip0kex7y" path="res://assets/images/i-made-this-sick-parchment-texture-for-the-ninepatchrect-v0-vae9j5z9sx4a1.png" id="2_8a1pk"]
 [ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_guqi4"]
 [ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="2_inb0i"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="4_xp7x1"]
-[ext_resource type="PackedScene" uid="uid://gxba068c0acp" path="res://scenes/menu_button.tscn" id="6_tp5ow"]
+[ext_resource type="PackedScene" uid="uid://gxba068c0acp" path="res://scenes/00_menu_button/menu_button.tscn" id="6_tp5ow"]
 
 [node name="StartingLetter" type="Node2D" unique_id=866571104]
 script = ExtResource("1_h1ocp")

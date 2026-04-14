@@ -15,7 +15,7 @@ const SCENE_PATHS: Dictionary = {
 	KEY_LOADING_SCREEN: "uid://bbn1nvys51vyr",
 	KEY_SETTINGS_SCREEN: "uid://cc1yqy62xbprh",
 	KEY_STARTING_LETTER: "uid://dgwvco47ur5ul",
-	KEY_ASSIGNMENT_SCREEN: "",
+	KEY_ASSIGNMENT_SCREEN: "uid://c8xu04a56il4n",
 	KEY_GRABBING_MINIGAME: "uid://c8j45fnevhlxu",
 	KEY_CHOPPING_MINIGAME: "uid://cynxr8b5pq2st",
 	KEY_STIRRING_MINIGAME: "uid://dd0id6bppupej",

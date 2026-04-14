@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b1j6udrtmx3w6"]
 
-[ext_resource type="Script" uid="uid://irinjgntsrry" path="res://scenes/fruit/fruit.gd" id="1_luid3"]
+[ext_resource type="Script" uid="uid://irinjgntsrry" path="res://scenes/04_fruit_scenes/fruit.gd" id="1_luid3"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8dwgx"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"

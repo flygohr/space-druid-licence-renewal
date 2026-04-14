@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bqj261sssx85t"]
 
-[ext_resource type="Script" uid="uid://b2of7tsnh0hdg" path="res://scenes/stirring_minigame/pot.gd" id="1_1qkew"]
+[ext_resource type="Script" uid="uid://b2of7tsnh0hdg" path="res://scenes/07_stirring_minigame/pot.gd" id="1_1qkew"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5iwio"]
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
@@ -9,24 +9,24 @@ load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.cte
 load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iwio"]
-size = Vector2(170, 20)
+size = Vector2(138, 20)
 
 [node name="Pot" type="Node2D" unique_id=1071121286]
 script = ExtResource("1_1qkew")
 
 [node name="PotSprite" type="Sprite2D" parent="." unique_id=1243578868]
-scale = Vector2(1.25, 1.25)
+scale = Vector2(0.99999994, 0.99999994)
 texture = SubResource("CompressedTexture2D_5iwio")
 
 [node name="LadleSprite" type="Sprite2D" parent="." unique_id=310400166]
-position = Vector2(-72, 0)
-scale = Vector2(1.375, 0.125)
+position = Vector2(-56.000004, 0)
+scale = Vector2(1.125, 0.125)
 texture = SubResource("CompressedTexture2D_1qkew")
 
 [node name="LadleCollisionArea" type="Area2D" parent="." unique_id=1909204441]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LadleCollisionArea" unique_id=1451658342]
-position = Vector2(-75, 0)
+position = Vector2(-59, 0)
 shape = SubResource("RectangleShape2D_5iwio")
 
 [connection signal="area_entered" from="LadleCollisionArea" to="." method="_on_ladle_collision_area_area_entered"]

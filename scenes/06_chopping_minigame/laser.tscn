@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://db7kqba0u74ss"]
 
-[ext_resource type="Script" uid="uid://db5tskrjlejip" path="res://scenes/chopping_minigame/laser.gd" id="1_kd2n5"]
+[ext_resource type="Script" uid="uid://db5tskrjlejip" path="res://scenes/06_chopping_minigame/laser.gd" id="1_kd2n5"]
 
 [node name="Laser" type="Node2D" unique_id=194175759]
 script = ExtResource("1_kd2n5")

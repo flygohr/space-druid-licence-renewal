@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c8j45fnevhlxu"]
 
-[ext_resource type="Script" uid="uid://bwx2xmchstnvg" path="res://scenes/grabbing_minigame/grabbing_scene.gd" id="1_3vatu"]
-[ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/fruit/fruit.tscn" id="2_g0x35"]
+[ext_resource type="Script" uid="uid://bwx2xmchstnvg" path="res://scenes/05_grabbing_minigame/grabbing_scene.gd" id="1_3vatu"]
+[ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/04_fruit_scenes/fruit.tscn" id="2_g0x35"]
 
 [sub_resource type="Curve2D" id="Curve2D_g0x35"]
 _data = {
