@@ -3,10 +3,11 @@ extends Node2D
 const TITLE_SCREEN_SCENE: StringName = ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_TITLE_SCREEN]
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-@onready var music_slider: HSlider = $CanvasLayer/MarginContainer/VBoxContainer/MusicSliderContainer/MusicSlider
-@onready var music_slider_value: Label = $CanvasLayer/MarginContainer/VBoxContainer/MusicSliderContainer/MusicSliderValue
-@onready var sfx_slider: HSlider = $CanvasLayer/MarginContainer/VBoxContainer/SFXSliderContainer/SFXSlider
-@onready var sfx_slider_value: Label = $CanvasLayer/MarginContainer/VBoxContainer/SFXSliderContainer/SFXSliderValue
+@onready var music_slider: HSlider = $CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer/MusicSlider
+@onready var music_slider_value: Label = $CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer/MusicSliderValue
+@onready var sfx_slider: HSlider = $CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer/SFXSlider
+@onready var sfx_slider_value: Label = $CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer/SFXSliderValue
+
 @onready var quit_button: Button = $CanvasLayer/MarginContainer/VBoxContainer/QuitButton
 
 func _ready() -> void:	

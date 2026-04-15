@@ -1,8 +1,16 @@
 [gd_scene format=3 uid="uid://cc1yqy62xbprh"]
 
 [ext_resource type="Script" uid="uid://bdqfmmr2y78kg" path="res://autoloads/settings/settings.gd" id="1_5p8wc"]
+[ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="2_2pyio"]
 [ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_r6d6q"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="3_6wm04"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pyio"]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_right = 4.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.5019608)
 
 [node name="Settings" type="Node2D" unique_id=330638506]
 process_mode = 3
@@ -13,13 +21,15 @@ script = ExtResource("1_5p8wc")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=227505281]
 layer = 10
 
+[node name="SpaceBackground" parent="CanvasLayer" unique_id=245754142 instance=ExtResource("2_2pyio")]
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1353953176]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.05782773, 0.09071869, 1)
+color = Color(0, 0, 0, 0.2509804)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1998997710]
 anchors_preset = 15
@@ -39,51 +49,63 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MusicSliderContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1422010896]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=2037411919]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2pyio")
+
+[node name="MusicSliderContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer" unique_id=1422010896]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MusicSliderLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=1271875001]
+[node name="MusicSliderLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer" unique_id=1271875001]
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.93333334, 0.9254902, 0.87058824, 1)
 text = "Music:"
 
-[node name="MusicSlider" type="HSlider" parent="CanvasLayer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=1730764814]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer" unique_id=1730764814]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 step = 10.0
 value = 100.0
 
-[node name="MusicSliderValue" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MusicSliderContainer" unique_id=1513095822]
+[node name="MusicSliderValue" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer" unique_id=1513095822]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.93333334, 0.9254902, 0.87058824, 1)
 text = "100%"
 horizontal_alignment = 2
 
-[node name="SFXSliderContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1392802761]
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=754039953]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2pyio")
+
+[node name="SFXSliderContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1392802761]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="SFXSliderLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=1345289020]
+[node name="SFXSliderLabel" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer" unique_id=1345289020]
 custom_minimum_size = Vector2(36, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.93333334, 0.9254902, 0.87058824, 1)
 text = "SFX:"
 
-[node name="SFXSlider" type="HSlider" parent="CanvasLayer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=33482297]
+[node name="SFXSlider" type="HSlider" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer" unique_id=33482297]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 step = 10.0
 value = 100.0
 
-[node name="SFXSliderValue" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/SFXSliderContainer" unique_id=1046732147]
+[node name="SFXSliderValue" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer" unique_id=1046732147]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.93333334, 0.9254902, 0.87058824, 1)
 text = "100%"
 horizontal_alignment = 2
 
@@ -128,8 +150,8 @@ text = "QUIT TO TITLE"
 script = ExtResource("3_6wm04")
 metadata/_custom_type_script = "uid://c3p5hehud2mfn"
 
-[connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/MusicSliderContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/SFXSliderContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer/MusicSliderContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MarginContainer/VBoxContainer/PanelContainer2/SFXSliderContainer/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ExportSaveButton" to="." method="_on_export_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ImportSaveButton" to="." method="_on_import_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/BackButtonMargins/BackButton" to="." method="_on_back_button_pressed"]

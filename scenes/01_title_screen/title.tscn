@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://q3362xrshrsu"]
 
 [ext_resource type="Script" uid="uid://c3lyi851kms3q" path="res://scenes/01_title_screen/title.gd" id="1_4ignj"]
+[ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="2_ixpji"]
 [ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_p6dhs"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="2_wosw1"]
 
@@ -8,6 +9,16 @@
 script = ExtResource("1_4ignj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=617058382]
+
+[node name="SpaceBackground" parent="CanvasLayer" unique_id=245754142 instance=ExtResource("2_ixpji")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=46469436]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2509804)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=295295757]
 anchors_preset = 15

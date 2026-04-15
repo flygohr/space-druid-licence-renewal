@@ -1,14 +1,14 @@
 extends Node2D
 
 @onready var popup: CanvasLayer = $Popup
-@onready var background_panel: Panel = $Popup/BackgroundPanel
 @onready var popup_container: MarginContainer = $Popup/PopupContainer
-@onready var popup_text_container: PanelContainer = $Popup/PopupContainer/VBoxContainer/PopupTextContainer
+@onready var popup_text_container: NinePatchRect = $Popup/PopupContainer/VBoxContainer/PopupTextContainer
 @onready var popup_text_label: RichTextLabel = $Popup/PopupContainer/VBoxContainer/PopupTextContainer/MarginContainer/PopupTextLabel
-@onready var buttons_container: HBoxContainer = $Popup/PopupContainer/VBoxContainer/ButtonsContainer
-@onready var no_button: Button = $Popup/PopupContainer/VBoxContainer/ButtonsContainer/NoButton
-@onready var yes_button: Button = $Popup/PopupContainer/VBoxContainer/ButtonsContainer/YesButton
-@onready var next_button: Button = $Popup/PopupContainer/VBoxContainer/ButtonsContainer/NextButton
+@onready var buttons_container: HBoxContainer = $Popup/PopupContainer/VBoxContainer/MarginContainer2/ButtonsContainer
+@onready var no_button: Button = $Popup/PopupContainer/VBoxContainer/MarginContainer2/ButtonsContainer/NoButton
+@onready var yes_button: Button = $Popup/PopupContainer/VBoxContainer/MarginContainer2/ButtonsContainer/YesButton
+@onready var next_button: Button = $Popup/PopupContainer/VBoxContainer/MarginContainer2/ButtonsContainer/NextButton
+
 
 signal no_button_pressed
 signal yes_button_pressed

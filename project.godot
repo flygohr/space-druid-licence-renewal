@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Disgraced Space Druid"
-config/description="Combine exotic, absurd ingredients into cosmic brews to escape crippling gambling debt."
+config/description="Combine exotic ingredients using absurd tools to renew your Space Druid Licence."
 config/version="0.1"
 run/main_scene="uid://q3362xrshrsu"
 config/features=PackedStringArray("4.6", "GL Compatibility")
@@ -32,8 +32,8 @@ Settings="*uid://cc1yqy62xbprh"
 
 [display]
 
-window/size/viewport_width=272
-window/size/viewport_height=192
+window/size/viewport_width=240
+window/size/viewport_height=160
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 

@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://dnvvnhcf252el"]
 
-[ext_resource type="Texture2D" uid="uid://b5ouousoavlf0" path="res://assets/images/jeremy-thomas-E0AHdsENmDg-unsplash.jpg" id="1_gejcq"]
+[ext_resource type="Texture2D" uid="uid://c425cfodoorjw" path="res://assets/images/space_background.png" id="1_gejcq"]
 
 [node name="SpaceBackground" type="TextureRect" unique_id=245754142]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -2382.5
-offset_top = -1628.5
-offset_right = 2382.5
-offset_bottom = 1628.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -80.0
+offset_right = 360.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_gejcq")

@@ -6,7 +6,7 @@ class_name ButtonEffectsComponent
 @export var animation_duration: float = 0.1
 @export var scale_amount: Vector2 = Vector2(1.0,1.0)
 @export var rotation_amount: float = 0.0
-@export var outline_color: Color = Color(1.0, 1.0, 1.0, 1.0)
+@export var outline_color: Color = Color("eeecde")
 
 @onready var button: Button = get_parent()
 

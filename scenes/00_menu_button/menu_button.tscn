@@ -6,7 +6,7 @@
 [node name="MenuButton" type="Button" unique_id=607294290]
 custom_minimum_size = Vector2(0, 16)
 size_flags_horizontal = 0
-text = "[P] MENU"
+text = "MENU"
 script = ExtResource("1_sd4kj")
 
 [node name="ButtonEffectsComponent" type="Node" parent="." unique_id=1526085071]

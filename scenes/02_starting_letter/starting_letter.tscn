@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dgwvco47ur5ul"]
 
 [ext_resource type="Script" uid="uid://dbsb6q7wxhnei" path="res://scenes/02_starting_letter/starting_letter.gd" id="1_h1ocp"]
-[ext_resource type="Texture2D" uid="uid://e7p3ip0kex7y" path="res://assets/images/i-made-this-sick-parchment-texture-for-the-ninepatchrect-v0-vae9j5z9sx4a1.png" id="2_8a1pk"]
 [ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="2_guqi4"]
 [ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="2_inb0i"]
 [ext_resource type="Script" uid="uid://c3p5hehud2mfn" path="res://scenes/button_effects_component.gd" id="4_xp7x1"]
+[ext_resource type="Texture2D" uid="uid://bwlwalwpyfn0e" path="res://assets/images/parchment.png" id="5_sbcam"]
 [ext_resource type="PackedScene" uid="uid://gxba068c0acp" path="res://scenes/00_menu_button/menu_button.tscn" id="6_tp5ow"]
 
 [node name="StartingLetter" type="Node2D" unique_id=866571104]
@@ -27,17 +27,21 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=443486639]
-custom_minimum_size = Vector2(232, 0)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MenuButton" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=607294290 instance=ExtResource("6_tp5ow")]
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1659095364]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="MenuButton" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=607294290 instance=ExtResource("6_tp5ow")]
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1320544134]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_8a1pk")
+texture = ExtResource("5_sbcam")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
@@ -66,14 +70,18 @@ fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContinueButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=771378671]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=546033694]
+layout_mode = 2
+theme_override_constants/margin_right = 4
+
+[node name="ContinueButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer" unique_id=771378671]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 8
 text = "CONTINUE"
 
-[node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/ContinueButton" unique_id=343824152]
+[node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" unique_id=343824152]
 script = ExtResource("4_xp7x1")
 metadata/_custom_type_script = "uid://c3p5hehud2mfn"
 
-[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
