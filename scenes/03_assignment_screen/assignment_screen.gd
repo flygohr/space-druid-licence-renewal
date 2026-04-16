@@ -2,6 +2,18 @@ extends Node2D
 
 @onready var assignment_label: Label = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/AssignmentLabel
 
+@onready var ingredient_1_icon: TextureRect = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer/Ingredient_1_Icon
+@onready var ingredient_1_qty_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Ingredient_1_Qty
+@onready var ingredient_1_name_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Ingredient_1_Name
+
+@onready var ingredient_2_icon: TextureRect = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer/Ingredient_2_Icon
+@onready var ingredient_2_qty_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/Ingredient_2_Qty
+@onready var ingredient_2_name_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/Ingredient_2_Name
+
+@onready var ingredient_3_icon: TextureRect = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer/Ingredient_3_Icon
+@onready var ingredient_3_qty_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/Ingredient_3_Qty
+@onready var ingredient_3_name_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/Ingredient_3_Name
+
 func _ready() -> void:
 	if GameData.current[GameData.KEY_IS_NEW_GAME] == true:
 		play_tutorial()
@@ -11,6 +23,27 @@ func _ready() -> void:
 		GameData.current[GameData.KEY_CURRENT_LEVEL],
 		" ingredients:"
 	).to_upper()
+	
+	var ingredient_1_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_FRUIT_NAME]
+	var ingredient_1_icon_file = load(GameData.FRUIT_DATA[ingredient_1_name][GameData.FruitParams.SINGLE_TEXTURE]) 
+	ingredient_1_icon.texture = ingredient_1_icon_file
+	var ingredient_1_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_QTY]
+	ingredient_1_qty_label.text = str(ingredient_1_qty, "x")
+	ingredient_1_name_label.text = ingredient_1_name.to_upper()
+	
+	var ingredient_2_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_FRUIT_NAME]
+	var ingredient_2_icon_file = load(GameData.FRUIT_DATA[ingredient_2_name][GameData.FruitParams.SINGLE_TEXTURE]) 
+	ingredient_2_icon.texture = ingredient_2_icon_file
+	var ingredient_2_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_QTY]
+	ingredient_2_qty_label.text = str(ingredient_2_qty, "x")
+	ingredient_2_name_label.text = ingredient_2_name.to_upper()
+	
+	var ingredient_3_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_FRUIT_NAME]
+	var ingredient_3_icon_file = load(GameData.FRUIT_DATA[ingredient_3_name][GameData.FruitParams.SINGLE_TEXTURE]) 
+	ingredient_3_icon.texture = ingredient_3_icon_file
+	var ingredient_3_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_QTY]
+	ingredient_3_qty_label.text = str(ingredient_3_qty, "x")
+	ingredient_3_name_label.text = ingredient_3_name.to_upper()
 
 func play_tutorial() -> void:
 	# generate protocol number to be referenced later

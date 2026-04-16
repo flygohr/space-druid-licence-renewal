@@ -1,19 +1,18 @@
 [gd_scene format=3 uid="uid://b1j6udrtmx3w6"]
 
 [ext_resource type="Script" uid="uid://irinjgntsrry" path="res://scenes/04_fruit_scenes/fruit.gd" id="1_luid3"]
-[ext_resource type="Texture2D" uid="uid://cm1nj60d1c5rv" path="res://assets/images/fruit_kidney_grapes/kidney_grapes.png" id="2_fhe0s"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_luid3"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f6dk3"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h2wgk"]
 radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6dk3"]
 radius = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_luid3"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f6dk3"]
+load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
 
 [node name="Fruit" type="Node2D" unique_id=328631459]
 script = ExtResource("1_luid3")
@@ -23,22 +22,6 @@ script = ExtResource("1_luid3")
 [node name="PathFollow2D" type="PathFollow2D" parent="GrabbingPath" unique_id=1958183973]
 
 [node name="FruitShape" type="Node2D" parent="." unique_id=1850640640]
-
-[node name="Sprites" type="Node2D" parent="FruitShape" unique_id=222717112]
-
-[node name="SpriteFull" type="Sprite2D" parent="FruitShape/Sprites" unique_id=107178803]
-
-[node name="SpriteChopped" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1934207790]
-visible = false
-modulate = Color(1, 1, 1, 0.49803922)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("CompressedTexture2D_luid3")
-
-[node name="SpritePowder" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1089882609]
-visible = false
-modulate = Color(1, 1, 1, 0.24705882)
-scale = Vector2(0.375, 0.375)
-texture = SubResource("CompressedTexture2D_f6dk3")
 
 [node name="CollisionChecks" type="Node2D" parent="FruitShape" unique_id=1132912303]
 
@@ -60,9 +43,28 @@ offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
 offset_bottom = 8.0
-texture_normal = ExtResource("2_fhe0s")
+
+[node name="Sprites" type="Node2D" parent="FruitShape" unique_id=222717112]
+
+[node name="SpriteFull" type="Sprite2D" parent="FruitShape/Sprites" unique_id=107178803]
+
+[node name="SpriteChopped" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1934207790]
+visible = false
+modulate = Color(1, 1, 1, 0.49803922)
+scale = Vector2(0.25, 0.25)
+texture = SubResource("CompressedTexture2D_luid3")
+
+[node name="SpritePowder" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1089882609]
+visible = false
+modulate = Color(1, 1, 1, 0.24705882)
+scale = Vector2(0.375, 0.375)
+texture = SubResource("CompressedTexture2D_f6dk3")
+
+[node name="Timer" type="Timer" parent="." unique_id=1867958770]
+wait_time = 2.0
 
 [connection signal="area_entered" from="FruitShape/CollisionChecks/FruitCollisionFull" to="." method="_on_fruit_collision_full_area_entered"]
 [connection signal="area_exited" from="FruitShape/CollisionChecks/FruitCollisionFull" to="." method="_on_fruit_collision_full_area_exited"]
 [connection signal="area_entered" from="FruitShape/CollisionChecks/FruitCollisionChopped" to="." method="_on_fruit_collision_chopped_area_entered"]
 [connection signal="gui_input" from="FruitShape/CollisionChecks/GrabbingCollision" to="." method="_on_color_rect_gui_input"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

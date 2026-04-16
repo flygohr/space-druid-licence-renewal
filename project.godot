@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Disgraced Space Druid"
+config/name="Space Druid Licence Renewal"
 config/description="Combine exotic ingredients using absurd tools to renew your Space Druid Licence."
 config/version="0.1"
 run/main_scene="uid://q3362xrshrsu"

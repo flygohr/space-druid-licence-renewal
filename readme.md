@@ -32,6 +32,7 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 	- [ ] Repeating space background
 	- [ ] Colored handles for sliders to match theme
 	- [ ] Chopped and ground fruit states
+	- [ ] "junk" for grabbing minigame
 - [ ] Ditch the spacebar, make everything on click so it can work on mobile
 - [ ] Set up grade screen
 - [ ] Set up report card

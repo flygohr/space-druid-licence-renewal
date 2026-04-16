@@ -41,7 +41,7 @@ const FRUIT_DATA: Dictionary = {
 		FruitParams.PATH_COMPLEXITY: 0
 	},
 	KEY_ALL_SEEING_CHERRY: {
-		FruitParams.MAIN_TEXTURE: "uid://b5jttb4gpdhq4",
+		FruitParams.MAIN_TEXTURE: "uid://bphmskpwbpnsv",
 		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
 		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
 		FruitParams.SINGLE_TEXTURE: "uid://b5jttb4gpdhq4",
@@ -50,24 +50,35 @@ const FRUIT_DATA: Dictionary = {
 		FruitParams.PATH_COMPLEXITY: 0
 	},
 	KEY_COSMIC_WATERMELON: {
-		FruitParams.MAIN_TEXTURE: "uid://cnju17kj1mg17",
+		FruitParams.MAIN_TEXTURE: "uid://caeunebcv8sgj",
 		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
 		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
 		FruitParams.SINGLE_TEXTURE: "uid://cnju17kj1mg17",
-		FruitParams.IS_ANIMATED: false,
+		FruitParams.IS_ANIMATED: true,
 		FruitParams.SPEED: 15,
 		FruitParams.PATH_COMPLEXITY: 3
 	}
 }
 
 const KEY_REQUIREMENTS: String = "requirements"
+const KEY_FRUIT_NAME: String = "fruit_name"
+const KEY_QTY: String = "qty"
 
 const LEVELS: Dictionary = {
 	1: {
 		KEY_REQUIREMENTS: {
-			KEY_KIDNEY_GRAPES: 5,
-			KEY_ALL_SEEING_CHERRY: 5,
-			KEY_COSMIC_WATERMELON: 1
+			1: {
+				KEY_FRUIT_NAME: KEY_KIDNEY_GRAPES,
+				KEY_QTY: 5
+			},
+			2: {
+				KEY_FRUIT_NAME: KEY_ALL_SEEING_CHERRY,
+				KEY_QTY: 5
+			},
+			3: {
+				KEY_FRUIT_NAME: KEY_COSMIC_WATERMELON,
+				KEY_QTY: 1
+			},
 		}
 	}
 }

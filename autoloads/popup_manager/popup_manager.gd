@@ -21,7 +21,7 @@ func show_popup_confirmation(popup_text: String, no_button_text: String = "No", 
 	next_button.hide()
 	
 	popup.show()
-	popup_text_label.text = popup_text.to_upper()
+	popup_text_label.text = popup_text
 	no_button.text = no_button_text.to_upper()
 	yes_button.text = yes_button_text.to_upper()
 
@@ -32,7 +32,7 @@ func show_popup_dialog(popup_text: String, next_button_text: String = "Next") ->
 	
 	popup.show()
 	popup_text_label.text = popup_text
-	next_button.text = next_button_text
+	next_button.text = next_button_text.to_upper()
 
 func _on_no_button_pressed() -> void:
 	popup.hide()

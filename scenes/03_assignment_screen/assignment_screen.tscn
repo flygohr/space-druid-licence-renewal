@@ -100,7 +100,7 @@ theme_override_constants/separation = 4
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1942173886]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1403547435]
+[node name="Ingredient_1_Icon" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=1403547435]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -109,13 +109,13 @@ texture = ExtResource("6_4850y")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=540155829]
+[node name="Ingredient_1_Qty" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=540155829]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 text = "5x"
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1881421415]
+[node name="Ingredient_1_Name" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1881421415]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "KIDNEY GRAPES"
@@ -140,7 +140,7 @@ theme_override_constants/separation = 4
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=1478242180]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer" unique_id=783676015]
+[node name="Ingredient_2_Icon" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer/PanelContainer" unique_id=783676015]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -149,13 +149,13 @@ texture = ExtResource("7_4850y")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=999362744]
+[node name="Ingredient_2_Qty" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=999362744]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 text = "5x"
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=286908970]
+[node name="Ingredient_2_Name" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/HBoxContainer" unique_id=286908970]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "ALL-SEEING CHERRIES"
@@ -180,7 +180,7 @@ theme_override_constants/separation = 4
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=1517120239]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer" unique_id=1253341057]
+[node name="Ingredient_3_Icon" type="TextureRect" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/PanelContainer" unique_id=1253341057]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -189,13 +189,13 @@ texture = ExtResource("8_4850y")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=2047643114]
+[node name="Ingredient_3_Qty" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=2047643114]
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 text = "1x"
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=888441486]
+[node name="Ingredient_3_Name" type="RichTextLabel" parent="CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer" unique_id=888441486]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "COSMIC WATERMELONS"

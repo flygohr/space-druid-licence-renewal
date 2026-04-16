@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bwx2xmchstnvg" path="res://scenes/05_grabbing_minigame/grabbing_scene.gd" id="1_3vatu"]
 [ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/04_fruit_scenes/fruit.tscn" id="2_g0x35"]
+[ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="3_ji1rd"]
+[ext_resource type="Texture2D" uid="uid://cm1nj60d1c5rv" path="res://assets/images/fruit_kidney_grapes/kidney_grapes.png" id="4_jm11t"]
 
 [sub_resource type="Curve2D" id="Curve2D_g0x35"]
 _data = {
@@ -9,12 +11,24 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ji1rd"]
+bg_color = Color(0.87058824, 0.79607844, 0.62352943, 1)
+border_width_bottom = 1
+border_color = Color(0.078431375, 0.11372549, 0.12941177, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jm11t"]
+bg_color = Color(0.87058824, 0.79607844, 0.62352943, 1)
+border_width_top = 1
+border_color = Color(0.078431375, 0.11372549, 0.12941177, 1)
+
 [node name="GrabbingScene" type="Node2D" unique_id=871806407]
 script = ExtResource("1_3vatu")
 fruit_scene = ExtResource("2_g0x35")
 
+[node name="SpaceBackground" parent="." unique_id=2146281425 instance=ExtResource("3_ji1rd")]
+
 [node name="SpawnPath" type="Path2D" parent="." unique_id=860300810]
-position = Vector2(2.6666718, 0)
+position = Vector2(-17, -9)
 scale = Vector2(1.0416666, 1)
 curve = SubResource("Curve2D_g0x35")
 
@@ -32,18 +46,182 @@ wait_time = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768469732]
 
-[node name="FruitsGrabbedLabel" type="Label" parent="CanvasLayer" unique_id=131829374]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 44.0
-offset_bottom = 17.0
+[node name="TempPortal" type="Control" parent="CanvasLayer" unique_id=107759304]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="TimeLeftLabel" type="Label" parent="CanvasLayer" unique_id=708711159]
-offset_top = 8.0
-offset_right = 272.0
-offset_bottom = 21.0
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=1076380902]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=1311441552]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=812759801]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=791754354]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="TopBar" type="PanelContainer" parent="CanvasLayer" unique_id=1144293377]
+custom_minimum_size = Vector2(0, 16)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ji1rd")
+
+[node name="TopMessageLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=708711159]
+layout_mode = 2
 text = "TIME LEFT: "
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomBar" type="PanelContainer" parent="CanvasLayer" unique_id=333758750]
+custom_minimum_size = Vector2(0, 16)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jm11t")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar" unique_id=1304030985]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer" unique_id=1731353846]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Ingredient1" type="PanelContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer" unique_id=45924877]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient1" unique_id=1950765219]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient1/MarginContainer" unique_id=790275343]
+layout_mode = 2
+
+[node name="Ingredient1Texture" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient1/MarginContainer/HBoxContainer" unique_id=1770237167]
+layout_mode = 2
+texture = ExtResource("4_jm11t")
+
+[node name="Ingredient1Label" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient1/MarginContainer/HBoxContainer" unique_id=1088895228]
+layout_mode = 2
+text = "0/5"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Ingredient2" type="PanelContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer" unique_id=1048052507]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient2" unique_id=336649152]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient2/MarginContainer" unique_id=1664650082]
+layout_mode = 2
+
+[node name="Ingredient2Texture" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient2/MarginContainer/HBoxContainer" unique_id=708867183]
+layout_mode = 2
+texture = ExtResource("4_jm11t")
+
+[node name="Ingredient2Label" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient2/MarginContainer/HBoxContainer" unique_id=1077897339]
+layout_mode = 2
+text = "0/5"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Ingredient3" type="PanelContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer" unique_id=367573035]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient3" unique_id=978023985]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient3/MarginContainer" unique_id=2142863907]
+layout_mode = 2
+
+[node name="Ingredient3Texture" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient3/MarginContainer/HBoxContainer" unique_id=51546276]
+layout_mode = 2
+texture = ExtResource("4_jm11t")
+
+[node name="Ingredient3Label" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient3/MarginContainer/HBoxContainer" unique_id=1169702096]
+layout_mode = 2
+text = "0/5"
+fit_content = true
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="Junk" type="PanelContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer" unique_id=282501764]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk" unique_id=450087604]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk/MarginContainer" unique_id=1800557504]
+layout_mode = 2
+
+[node name="JunkTexture" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk/MarginContainer/HBoxContainer" unique_id=588267962]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("4_jm11t")
+
+[node name="JunkLabel" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk/MarginContainer/HBoxContainer" unique_id=1746448207]
+layout_mode = 2
+text = "0"
+fit_content = true
+autowrap_mode = 0
 vertical_alignment = 1
 
 [node name="ClickBlocker" type="ColorRect" parent="CanvasLayer" unique_id=375182457]

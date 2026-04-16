@@ -1,4 +1,5 @@
 extends Node2D
+class_name SpaceFruit
 
 @onready var grabbing_path: Path2D = $GrabbingPath
 @onready var path_follow_2d: PathFollow2D = $GrabbingPath/PathFollow2D
@@ -9,7 +10,12 @@ extends Node2D
 @onready var sprite_powder: Sprite2D = $FruitShape/Sprites/SpritePowder
 @onready var grabbing_collision: TextureButton = $FruitShape/CollisionChecks/GrabbingCollision
 @onready var fruit_shape: Node2D = $FruitShape
+@onready var timer: Timer = $Timer
 
+var sprite_full_uri: String
+var sprite_chopped_uri: String
+var sprite_powder_uri: String
+var grabbing_sprite_uri: String
 var is_animated: bool = false
 var speed: int = 25
 var path_complexity: int = 0
@@ -17,15 +23,22 @@ var path_complexity: int = 0
 enum Statuses {FULL, CHOPPED, GROUNDED}
 var status = Statuses.FULL
 
-var sprite_full_uri: String
-var grabbing_sprite_uri: String
-
 func _ready() -> void:
-	print("ready")
+	
+	timer.wait_time = randf_range(1.5,3.5)
 	
 	if sprite_full_uri:
 		var sprite_full_texture = load(sprite_full_uri)
 		sprite_full.texture = sprite_full_texture
+		if is_animated == true: sprite_full.hframes = 2
+		
+	if sprite_chopped_uri:
+		var sprite_chopped_texture = load(sprite_chopped_uri)
+		sprite_chopped.texture = sprite_chopped_texture
+		
+	if sprite_powder_uri:
+		var sprite_powder_texture = load(sprite_chopped_uri)
+		sprite_powder.texture = sprite_powder_texture
 		
 	if grabbing_sprite_uri:
 		var grabbing_texture = load(grabbing_sprite_uri)
@@ -36,7 +49,6 @@ func _ready() -> void:
 		bitmap.create_from_image_alpha(image)
 		grabbing_collision.texture_click_mask = bitmap
 		
-	
 	set_process(false)
 
 func _process(delta: float) -> void:
@@ -46,6 +58,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func start_pathing(start_pos: Vector2, end_pos: Vector2) -> void:
+	if is_animated == true: timer.start()
 	var new_curve: Curve2D = Curve2D.new()
 	new_curve.add_point(to_local(start_pos))
 	new_curve.add_point(to_local(end_pos))
@@ -84,3 +97,9 @@ func _on_color_rect_gui_input(event: InputEvent) -> void:
 
 func reset_transforms() -> void:
 	fruit_shape.position = Vector2.ZERO
+
+func _on_timer_timeout() -> void:
+	if sprite_full.frame == 1:
+		sprite_full.frame = 0
+	elif sprite_full.frame == 0:
+		sprite_full.frame = 1
