@@ -14,6 +14,7 @@ signal yes_button_pressed
 signal next_button_pressed
 
 #TODO: work on a fade in and fade out of popups
+#TODO: buttons starts at wrong size and overlay lines are wrong
 
 func show_popup_confirmation(popup_text: String, no_button_text: String = "No", yes_button_text: String = "Yes") -> void:
 	no_button.show()

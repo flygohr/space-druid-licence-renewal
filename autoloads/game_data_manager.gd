@@ -104,6 +104,8 @@ const KEY_GAME_VERSION: String = "game version"
 const KEY_IS_NEW_GAME: String = "is new game"
 const KEY_PROTOCOL_NUMBER: String = "protocol number"
 const KEY_CURRENT_LEVEL: String = "current level"
+const KEY_GRABBING_TIME: String = "grabbing time"
+const KEY_GRABBING_JUNK_AMT: String = "grabbing junk"
 
 # DEFAULT GAME DATA
 # What to load into a new save
@@ -111,7 +113,9 @@ const DEFAULT_GAME_DATA: Dictionary = {
 	KEY_GAME_VERSION: GAME_VERSION,
 	KEY_IS_NEW_GAME: true, #TODO: change to false upon completing level 1
 	KEY_PROTOCOL_NUMBER: "AA-12345",
-	KEY_CURRENT_LEVEL: 1
+	KEY_CURRENT_LEVEL: 1,
+	KEY_GRABBING_TIME: 0.0,
+	KEY_GRABBING_JUNK_AMT: 0
 }
 
 # CURRENT GAME DATA

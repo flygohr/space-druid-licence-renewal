@@ -12,6 +12,7 @@ class_name SpaceFruit
 @onready var fruit_shape: Node2D = $FruitShape
 @onready var timer: Timer = $Timer
 
+var fruit_type: String
 var sprite_full_uri: String
 var sprite_chopped_uri: String
 var sprite_powder_uri: String
@@ -87,13 +88,14 @@ func _on_fruit_collision_full_area_exited(area: Area2D) -> void:
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 		if event.is_action_pressed("Grab"):
-			print("Grabbing")
+			# print("Grabbing ", fruit_type)
+			SignalBus.fruit_grabbed.emit(fruit_type)
 			GameData.current_fruits.append(self)
 			reparent(get_node("/root/GameData"))
 			set_process(false)
 			grabbing_collision.hide()
 			reset_transforms()
-			hide()
+			hide() #TODO: play zapping animation
 
 func reset_transforms() -> void:
 	fruit_shape.position = Vector2.ZERO

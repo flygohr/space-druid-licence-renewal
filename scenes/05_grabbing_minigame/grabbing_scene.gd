@@ -3,7 +3,6 @@ extends Node2D
 @export var fruit_scene: PackedScene
 
 @onready var spawn_timer: Timer = $SpawnTimer
-@onready var time_to_grab: Timer = $TimeToGrab
 
 @onready var top_message_label: Label = $CanvasLayer/TopBar/TopMessageLabel
 
@@ -25,37 +24,83 @@ extends Node2D
 var minigame_started: bool = false
 var grabbing_enabled: bool = false
 
+var elapsed_time: float = 0.0
+var junk_collected: int = 0:
+	set(new_value):
+		junk_collected = new_value
+		update_junk_label(new_value)
+
+var ingredient_1_name: String 
+var ingredient_1_target_qty: int = 0
+var ingredient_1_current_qty: int = 0:
+	set(new_value):
+		ingredient_1_current_qty = new_value
+		update_ingredient_1_label(new_value)
+
+var ingredient_2_name: String
+var ingredient_2_target_qty: int = 0
+var ingredient_2_current_qty: int = 0:
+	set(new_value):
+		ingredient_2_current_qty = new_value
+		update_ingredient_2_label(new_value)
+
+var ingredient_3_name: String
+var ingredient_3_target_qty: int = 0
+var ingredient_3_current_qty: int = 0:
+	set(new_value):
+		ingredient_3_current_qty = new_value
+		update_ingredient_3_label(new_value)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.fruit_grabbed.connect(parse_grabbed_fruit)
 	set_process(false)
+	
+	if GameData.current[GameData.KEY_IS_NEW_GAME] == true:
+		PopupManager.show_popup_dialog("Space Fruit grows randomly in dedicated pocket dimensions. You have the GDG's permission to open portals to them.")
+		await PopupManager.next_button_pressed
+		PopupManager.show_popup_dialog("Use your Teleportation Gun to zap the required Space Fruit as fast as you can. The faster, the better your final grade.")
+		await PopupManager.next_button_pressed
+		PopupManager.show_popup_dialog("Try to zap only the required Space Fruit. Getting unnecessary ingredients will lower your final grade.", "Start")
+		await PopupManager.next_button_pressed
+	
 	top_message_label.text = "HIT SPACE WHEN READY"
 	
-	var ingredient_1_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_FRUIT_NAME]
+	ingredient_1_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_FRUIT_NAME]
 	var ingredient_1_icon_file = load(GameData.FRUIT_DATA[ingredient_1_name][GameData.FruitParams.SINGLE_TEXTURE]) 
 	ingredient_1_texture.texture = ingredient_1_icon_file
-	var ingredient_1_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_QTY]
+	ingredient_1_target_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_QTY]
 	# ingredient_1_qty_label.text = str(ingredient_1_qty, "x")
 	# ingredient_1_name_label.text = ingredient_1_name.to_upper()
 	
-	var ingredient_2_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_FRUIT_NAME]
+	ingredient_2_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_FRUIT_NAME]
 	var ingredient_2_icon_file = load(GameData.FRUIT_DATA[ingredient_2_name][GameData.FruitParams.SINGLE_TEXTURE]) 
 	ingredient_2_texture.texture = ingredient_2_icon_file
-	var ingredient_2_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_QTY]
+	ingredient_2_target_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][2][GameData.KEY_QTY]
 	# ingredient_2_qty_label.text = str(ingredient_2_qty, "x")
 	# ingredient_2_name_label.text = ingredient_2_name.to_upper()
 	
-	var ingredient_3_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_FRUIT_NAME]
+	ingredient_3_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_FRUIT_NAME]
 	var ingredient_3_icon_file = load(GameData.FRUIT_DATA[ingredient_3_name][GameData.FruitParams.SINGLE_TEXTURE]) 
 	ingredient_3_texture.texture = ingredient_3_icon_file
-	var ingredient_3_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_QTY]
+	ingredient_3_target_qty = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][3][GameData.KEY_QTY]
 	#ingredient_3_qty_label.text = str(ingredient_3_qty, "x")
 	#ingredient_3_name_label.text = ingredient_3_name.to_upper()
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if grabbing_enabled == true:
-		top_message_label.text = str("TIME LEFT: %0.2f" % time_to_grab.time_left,"s")
+		elapsed_time += delta
+		top_message_label.text = str("ELAPSED TIME: %0.2f" % elapsed_time,"s")
+		
+		if (
+			ingredient_1_current_qty >= ingredient_1_target_qty and
+			ingredient_2_current_qty >= ingredient_2_target_qty and
+			ingredient_3_current_qty >= ingredient_3_target_qty
+		):
+			end_grabbing_minigame()
 
 func _input(event):
 	if event.is_action_pressed("Interact") and !minigame_started and grabbing_enabled == false:
@@ -65,7 +110,7 @@ func _input(event):
 	# elif check mouse position for fruit
 
 func start_countdown() -> void:
-	spawn_timer.start()
+	spawn_timer.start() #TODO: add some random spawns so it's already populated. and also, keep count of how many are spawned to keep a steady amount in circulation. this could be a better idea! spawn like 50, and keep track and spawn new ones when freed!
 	top_message_label.text = "START IN 3..."
 	await get_tree().create_timer(1.0).timeout
 	top_message_label.text = "START IN 2..."
@@ -74,13 +119,13 @@ func start_countdown() -> void:
 	await get_tree().create_timer(1.0).timeout
 	grabbing_enabled = true
 	click_blocker.hide()
-	time_to_grab.start()
 
 func spawn_fruit() -> void:
 	var new_fruit := fruit_scene.instantiate()
-	var picked_fruit = GameData.FRUIT_KEYS.pick_random()
+	var picked_fruit = GameData.FRUIT_KEYS.pick_random() #TODO: weighted random
 	
 	#instead of calling a function here, set parameters as variables
+	new_fruit.fruit_type = str(picked_fruit)
 	new_fruit.sprite_full_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.MAIN_TEXTURE]
 	new_fruit.sprite_chopped_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.CHOPPED_TEXTURE]
 	new_fruit.sprite_powder_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.POWDER_TEXTURE]
@@ -101,13 +146,61 @@ func spawn_fruit() -> void:
 	
 	add_child(new_fruit)
 	new_fruit.start_pathing(start_point_pos, end_point_pos)
-
+	
+func end_grabbing_minigame() -> void:
+	click_blocker.show()
+	grabbing_enabled = false
+	spawn_timer.stop()
+	
+	GameData.current[GameData.KEY_GRABBING_TIME] = elapsed_time
+	GameData.current[GameData.KEY_GRABBING_JUNK_AMT] = junk_collected
+	print(GameData.current_fruits)
+	SavesManager.save_game(GameData.current)
+	
+	PopupManager.show_popup_dialog(str(
+		"Zapped all the ingredients!\n",
+		ingredient_1_name.to_upper(), ": ", ingredient_1_current_qty, "/", ingredient_1_target_qty, "\n",
+		ingredient_2_name.to_upper(), ": ", ingredient_2_current_qty, "/", ingredient_2_target_qty, "\n",
+		ingredient_3_name.to_upper(), ": ", ingredient_3_current_qty, "/", ingredient_3_target_qty, "\n",
+		"UNNECESSARY FRUIT: ", junk_collected, "\n",
+		"TOTAL TIME: ", round_to_dec(elapsed_time,2), "s" #TODO: convert in minutes and seconds, same above
+	), "Continue")
+	await PopupManager.next_button_pressed
+	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_CHOPPING_MINIGAME])
+	
 func _on_spawn_timer_timeout() -> void:
 	spawn_fruit()
 	
-func _on_time_to_grab_timeout() -> void:
-	spawn_timer.stop()
-	click_blocker.show()
-	print(GameData.current_fruits)
-	await get_tree().create_timer(3.0).timeout
-	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_CHOPPING_MINIGAME])
+func parse_grabbed_fruit(type: String) -> void:
+	print("Grabbed ", type)
+	match type:
+		ingredient_1_name:
+			if(ingredient_1_current_qty == ingredient_1_target_qty):
+				junk_collected += 1
+			else: ingredient_1_current_qty += 1
+		ingredient_2_name:
+			if(ingredient_2_current_qty == ingredient_2_target_qty):
+				junk_collected += 1
+			else: ingredient_2_current_qty += 1
+		ingredient_3_name:
+			if(ingredient_3_current_qty == ingredient_3_target_qty):
+				junk_collected += 1
+			else: ingredient_3_current_qty += 1
+		_:
+			junk_collected += 1
+
+func update_ingredient_1_label(value: int) -> void:
+	ingredient_1_label.text = str(value, "/", ingredient_1_target_qty)
+	
+func update_ingredient_2_label(value: int) -> void:
+	ingredient_2_label.text = str(value, "/", ingredient_2_target_qty)
+	
+func update_ingredient_3_label(value: int) -> void:
+	ingredient_3_label.text = str(value, "/", ingredient_3_target_qty)
+	
+func update_junk_label(value: int) -> void:
+	junk_label.text = str(value)
+	
+# https://forum.godotengine.org/t/how-to-round-to-a-specific-decimal-place/27552/2
+func round_to_dec(num, digit):
+	return round(num * pow(10.0, digit)) / pow(10.0, digit)

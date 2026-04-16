@@ -7,6 +7,10 @@ extends Node
 signal pause_game
 signal unpause_game
 
+# GRABBING MINIGAME
+signal fruit_grabbed(type: String)
+
+# CHOPPING MINIGAME
 signal laser_finished_firing
 signal chopping_fruit_amt_changed(amt: int)
 signal chopping_happened(amt:int)

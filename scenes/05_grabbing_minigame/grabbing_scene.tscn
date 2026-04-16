@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://bwx2xmchstnvg" path="res://scenes/05_grabbing_minigame/grabbing_scene.gd" id="1_3vatu"]
 [ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/04_fruit_scenes/fruit.tscn" id="2_g0x35"]
 [ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="3_ji1rd"]
+[ext_resource type="Texture2D" uid="uid://bd3axnmihnmhc" path="res://assets/images/grabbing_portal.png" id="4_ebebh"]
 [ext_resource type="Texture2D" uid="uid://cm1nj60d1c5rv" path="res://assets/images/fruit_kidney_grapes/kidney_grapes.png" id="4_jm11t"]
+[ext_resource type="Texture2D" uid="uid://dbxcgyrrett40" path="res://assets/images/junk.png" id="6_kp7qu"]
 
 [sub_resource type="Curve2D" id="Curve2D_g0x35"]
 _data = {
@@ -37,60 +39,25 @@ position = Vector2(289.28003, -32)
 rotation = 3.1415927
 loop = false
 
-[node name="TimeToGrab" type="Timer" parent="." unique_id=1221225925]
-wait_time = 10.0
-one_shot = true
-
 [node name="SpawnTimer" type="Timer" parent="." unique_id=97403253]
 wait_time = 0.1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1768469732]
 
-[node name="TempPortal" type="Control" parent="CanvasLayer" unique_id=107759304]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2067501433]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=1076380902]
-custom_minimum_size = Vector2(4, 0)
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=1311441552]
-custom_minimum_size = Vector2(4, 0)
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=812759801]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/TempPortal" unique_id=791754354]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 1)
+mouse_filter = 2
+texture = ExtResource("4_ebebh")
 
 [node name="TopBar" type="PanelContainer" parent="CanvasLayer" unique_id=1144293377]
 custom_minimum_size = Vector2(0, 16)
@@ -213,9 +180,8 @@ theme_override_constants/margin_bottom = 1
 layout_mode = 2
 
 [node name="JunkTexture" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk/MarginContainer/HBoxContainer" unique_id=588267962]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-texture = ExtResource("4_jm11t")
+texture = ExtResource("6_kp7qu")
 
 [node name="JunkLabel" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Junk/MarginContainer/HBoxContainer" unique_id=1746448207]
 layout_mode = 2
@@ -232,5 +198,4 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[connection signal="timeout" from="TimeToGrab" to="." method="_on_time_to_grab_timeout"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

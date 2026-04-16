@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dnvvnhcf252el"]
 
-[ext_resource type="Texture2D" uid="uid://c425cfodoorjw" path="res://assets/images/space_background.png" id="1_gejcq"]
+[ext_resource type="Texture2D" uid="uid://csjpcxny1ifkw" path="res://assets/images/space_background_seamless.png" id="1_gejcq"]
 
 [node name="SpaceBackground" type="Node2D" unique_id=2146281425]
 process_mode = 3
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=616556662]
-repeat_size = Vector2(720, 0)
+repeat_size = Vector2(240, 0)
 autoscroll = Vector2(10, 0)
+repeat_times = 5
 follow_viewport = false
 ignore_camera_scroll = true
 
