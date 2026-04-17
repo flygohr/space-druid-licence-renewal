@@ -18,7 +18,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
+tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -34,7 +34,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
+tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -103,8 +103,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.13725491, 0.1764706, 0.20784314, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRect" unique_id=1654906319]
-root_node = NodePath("../ColorRect")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/TextureRect" unique_id=341396835]
 libraries/ = SubResource("AnimationLibrary_xly0u")
 
 [node name="TopBar" type="PanelContainer" parent="CanvasLayer" unique_id=1144293377]

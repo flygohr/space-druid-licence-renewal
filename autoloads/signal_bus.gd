@@ -14,8 +14,7 @@ signal spawn_fruit
 # CHOPPING MINIGAME
 signal laser_fired
 signal laser_finished_firing
-signal chopping_fruit_amt_changed(amt: int)
-signal chopping_happened(amt:int)
+signal fruit_chopped(type: String)
 
 # STIRRING MINIGAME
 signal laps_updated(value: int)

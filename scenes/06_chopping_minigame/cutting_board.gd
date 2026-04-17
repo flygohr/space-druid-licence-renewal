@@ -37,11 +37,9 @@ func spawn_fruit() -> void:
 		new_fruit.speed = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SPEED]
 		new_fruit.path_complexity = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.PATH_COMPLEXITY]
 		
-		new_fruit.position = to_global(Vector2(
-			int(randf_range(board_area.position.x, board_area.position.x+board_area.size.x)),
-			int(randf_range(board_area.position.y, board_area.position.y+board_area.size.y))
-		))
+		new_fruit.position = Vector2(
+			int(randf_range(board_area.position.x+8, board_area.position.x+board_area.size.x-8)),
+			int(randf_range(board_area.position.y+8, board_area.position.y+board_area.size.y-8))
+		)
 		add_child(new_fruit)
 		new_fruit.show()
-		GameData.total_fruits_amount += 1
-		GameData.current_fruits_amount = GameData.total_fruits_amount

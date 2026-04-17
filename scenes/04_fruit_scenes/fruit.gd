@@ -69,6 +69,7 @@ func _on_fruit_collision_full_area_entered(area: Area2D) -> void:
 		print("Fruit chopped")
 		sprite_full.hide()
 		sprite_chopped.show()
+		SignalBus.fruit_chopped.emit(fruit_type)
 
 func _on_fruit_collision_full_area_exited(area: Area2D) -> void:
 	if area.is_in_group("LaserBeam") and status == Statuses.FULL:

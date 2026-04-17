@@ -52,6 +52,7 @@ var ingredient_3_current_qty: int = 0:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	spawn_path.position.x = (get_viewport_rect().size.x/2)-(240/2)
 	SignalBus.fruit_grabbed.connect(parse_grabbed_fruit)
 	SignalBus.spawn_fruit.connect(spawn_fruit)
 	get_tree().root.size_changed.connect(on_viewport_size_changed)
@@ -68,7 +69,7 @@ func _ready() -> void:
 	animation_player.play_backwards("fadein")
 	await animation_player.animation_finished
 	
-	top_message_label.text = "HIT SPACE WHEN READY"
+	top_message_label.text = "HIT SPACE TO START"
 	
 	ingredient_1_name = GameData.LEVELS[GameData.current[GameData.KEY_CURRENT_LEVEL]][GameData.KEY_REQUIREMENTS][1][GameData.KEY_FRUIT_NAME]
 	var ingredient_1_icon_file = load(GameData.FRUIT_DATA[ingredient_1_name][GameData.FruitParams.SINGLE_TEXTURE]) 

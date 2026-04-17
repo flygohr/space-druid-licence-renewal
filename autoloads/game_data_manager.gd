@@ -81,11 +81,6 @@ const LEVELS: Dictionary = {
 }
 
 # CHOPPING MINIGAME
-var total_fruits_amount: int = 0
-var current_fruits_amount: int = 0:
-	set(new_value):
-		current_fruits_amount = new_value
-		SignalBus.chopping_fruit_amt_changed.emit(new_value)
 
 # STIRRING MINIGAME
 var stirring_ongoing = true
@@ -105,6 +100,7 @@ enum Minigames {GRABBING, CHOPPING, STIRRING}
 const KEY_CURRENT_LEVEL: String = "current level"
 const KEY_GRABBING_TIME: String = "grabbing time"
 const KEY_GRABBING_JUNK_AMT: String = "grabbing junk"
+const KEY_SHOTS_FIRED: String = "shots fired"
 
 # DEFAULT GAME DATA
 # What to load into a new save
@@ -115,7 +111,8 @@ const DEFAULT_GAME_DATA: Dictionary = {
 	KEY_CURRENT_MINIGAME: Minigames.GRABBING,
 	KEY_CURRENT_LEVEL: 1,
 	KEY_GRABBING_TIME: 0.0,
-	KEY_GRABBING_JUNK_AMT: 0
+	KEY_GRABBING_JUNK_AMT: 0,
+	KEY_SHOTS_FIRED: 0,
 }
 
 # CURRENT GAME DATA
