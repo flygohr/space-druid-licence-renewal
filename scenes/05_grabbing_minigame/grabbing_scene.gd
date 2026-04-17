@@ -134,7 +134,6 @@ func spawn_fruit(amt: int = 1) -> void:
 		print("Spawning ", picked_fruit)
 		new_fruit.sprite_full_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.MAIN_TEXTURE]
 		new_fruit.sprite_chopped_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.CHOPPED_TEXTURE]
-		new_fruit.sprite_powder_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.POWDER_TEXTURE]
 		new_fruit.grabbing_sprite_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SINGLE_TEXTURE]
 		new_fruit.is_animated = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.IS_ANIMATED]
 		new_fruit.speed = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SPEED]

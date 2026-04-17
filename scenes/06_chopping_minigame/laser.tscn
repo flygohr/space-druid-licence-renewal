@@ -5,8 +5,13 @@
 [node name="Laser" type="Node2D" unique_id=194175759]
 script = ExtResource("1_kd2n5")
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1662107902]
+[node name="OuterColor" type="Line2D" parent="." unique_id=852660308]
 points = PackedVector2Array(0, 0, 0, 0)
 width = 4.0
+default_color = Color(0.60784316, 0.78039217, 0.85490197, 1)
 
-[node name="StaticBody2D" type="Area2D" parent="Line2D" unique_id=1412471618 groups=["LaserBeam"]]
+[node name="OuterCollision" type="Area2D" parent="OuterColor" unique_id=261653902 groups=["LaserBeam"]]
+
+[node name="InnerColor" type="Line2D" parent="." unique_id=1662107902]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0

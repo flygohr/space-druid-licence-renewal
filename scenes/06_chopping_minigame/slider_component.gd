@@ -5,6 +5,8 @@ extends Node2D
 @onready var slider_rect: ColorRect = $SliderRect
 @onready var position_rect: ColorRect = $PositionRect
 @onready var marker_2d: Marker2D = $PositionRect/Marker2D
+@onready var laser_pointer: Sprite2D = $LaserPointer
+@onready var laser_firing: Sprite2D = $LaserFiring
 
 @export var speed: int = 100
 
@@ -18,6 +20,7 @@ var direction := Directions.RIGHT
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	SignalBus.laser_fired.connect(firing)
 	set_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +34,8 @@ func _process(delta: float) -> void:
 			if current_position < 0: direction = Directions.RIGHT
 		
 	position_rect.position.x = current_position
+	laser_pointer.position.x = current_position
+	laser_firing.position.x = current_position
 
 func _input(event):
 	if is_accepting_input and event.is_action_pressed("Interact") and is_sliding:
@@ -46,3 +51,10 @@ func stop_slider() -> void:
 	is_accepting_input = false
 	is_sliding = false
 	slider_stopped.emit(marker_2d.global_position)
+
+func firing() -> void:
+	laser_firing.show()
+	laser_pointer.hide()
+	await get_tree().create_timer(1.0).timeout
+	laser_firing.hide()
+	laser_pointer.show()

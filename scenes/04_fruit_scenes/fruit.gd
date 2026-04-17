@@ -5,17 +5,16 @@ class_name SpaceFruit
 @onready var path_follow_2d: PathFollow2D = $GrabbingPath/PathFollow2D
 @onready var fruit_collision_full: Area2D = $FruitShape/CollisionChecks/FruitCollisionFull
 @onready var fruit_collision_chopped: Area2D = $FruitShape/CollisionChecks/FruitCollisionChopped
-@onready var sprite_full: Sprite2D = $FruitShape/Sprites/SpriteFull
-@onready var sprite_chopped: Sprite2D = $FruitShape/Sprites/SpriteChopped
-@onready var sprite_powder: Sprite2D = $FruitShape/Sprites/SpritePowder
 @onready var grabbing_collision: TextureButton = $FruitShape/CollisionChecks/GrabbingCollision
 @onready var fruit_shape: Node2D = $FruitShape
 @onready var timer: Timer = $Timer
 
+@onready var sprite_full: Sprite2D = $FruitShape/Sprites/SpriteFull
+@onready var sprite_chopped: Sprite2D = $FruitShape/Sprites/SpriteChopped
+
 var fruit_type: String
 var sprite_full_uri: String
 var sprite_chopped_uri: String
-var sprite_powder_uri: String
 var grabbing_sprite_uri: String
 var is_animated: bool = false
 var speed: int = 25
@@ -37,10 +36,6 @@ func _ready() -> void:
 		var sprite_chopped_texture = load(sprite_chopped_uri)
 		sprite_chopped.texture = sprite_chopped_texture
 		
-	if sprite_powder_uri:
-		var sprite_powder_texture = load(sprite_chopped_uri)
-		sprite_powder.texture = sprite_powder_texture
-		
 	if grabbing_sprite_uri:
 		var grabbing_texture = load(grabbing_sprite_uri)
 		grabbing_collision.texture_normal = grabbing_texture
@@ -53,6 +48,7 @@ func _ready() -> void:
 	set_process(false)
 
 func _process(delta: float) -> void:
+	grabbing_collision.show()
 	path_follow_2d.progress += delta * speed
 	fruit_shape.position = path_follow_2d.position
 	if path_follow_2d.progress_ratio >= .99:
@@ -70,22 +66,22 @@ func start_pathing(start_pos: Vector2, end_pos: Vector2) -> void:
 
 func _on_fruit_collision_full_area_entered(area: Area2D) -> void:
 	if area.is_in_group("LaserBeam") and status == Statuses.FULL:
+		print("Fruit chopped")
 		sprite_full.hide()
 		sprite_chopped.show()
-		GameData.current_chopped_hits += 1
-
-func _on_fruit_collision_chopped_area_entered(area: Area2D) -> void:
-	if area.is_in_group("LaserBeam") and status == Statuses.CHOPPED:
-		sprite_chopped.hide()
-		sprite_powder.show()
-		GameData.current_chopped_hits += 1
-		GameData.current_fruits_amount -= 1
 
 func _on_fruit_collision_full_area_exited(area: Area2D) -> void:
 	if area.is_in_group("LaserBeam") and status == Statuses.FULL:
 		fruit_collision_full.hide()
 		fruit_collision_chopped.show()
 		status = Statuses.CHOPPED
+
+#func _on_fruit_collision_chopped_area_entered(area: Area2D) -> void:
+	#if area.is_in_group("LaserBeam") and status == Statuses.CHOPPED:
+		#sprite_chopped.hide()
+		#sprite_powder.show()
+		#GameData.current_chopped_hits += 1
+		#GameData.current_fruits_amount -= 1
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
 		if event.is_action_pressed("Grab"):

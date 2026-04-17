@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://cynxr8b5pq2st"]
 
 [ext_resource type="Script" uid="uid://bq36i4emsfwxg" path="res://scenes/06_chopping_minigame/chopping_scene.gd" id="1_47j87"]
+[ext_resource type="PackedScene" uid="uid://dy3gjpgwi5fym" path="res://scenes/06_chopping_minigame/cutting_board.tscn" id="2_54ocr"]
+[ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="2_luep2"]
 [ext_resource type="PackedScene" uid="uid://b5s0ycwcoxyxa" path="res://scenes/06_chopping_minigame/slider_component.tscn" id="2_snsjb"]
 [ext_resource type="PackedScene" uid="uid://db7kqba0u74ss" path="res://scenes/06_chopping_minigame/laser.tscn" id="3_g44pf"]
-[ext_resource type="Script" uid="uid://cp6hy7b7li7ji" path="res://scenes/06_chopping_minigame/cutting_board.gd" id="4_56ylu"]
 [ext_resource type="PackedScene" uid="uid://b1j6udrtmx3w6" path="res://scenes/04_fruit_scenes/fruit.tscn" id="5_vwr26"]
-[ext_resource type="Texture2D" uid="uid://dbxcgyrrett40" path="res://assets/images/junk.png" id="6_56ylu"]
+[ext_resource type="Texture2D" uid="uid://vlk86wcqkjc" path="res://assets/images/laser_icon.png" id="6_56ylu"]
 [ext_resource type="Texture2D" uid="uid://cm1nj60d1c5rv" path="res://assets/images/fruit_kidney_grapes/kidney_grapes.png" id="7_luep2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cuid"]
@@ -21,6 +22,9 @@ border_color = Color(0.078431375, 0.11372549, 0.12941177, 1)
 [node name="ChoppingMinigame" type="Node2D" unique_id=418510966]
 script = ExtResource("1_47j87")
 
+[node name="SpaceBackground" parent="." unique_id=2146281425 instance=ExtResource("2_luep2")]
+z_index = -1
+
 [node name="MinigameArea" type="Node2D" parent="." unique_id=1867627285]
 
 [node name="TopSlider" parent="MinigameArea" unique_id=1567326803 instance=ExtResource("2_snsjb")]
@@ -29,39 +33,12 @@ position = Vector2(0, 16)
 [node name="BottomSlider" parent="MinigameArea" unique_id=1170147702 instance=ExtResource("2_snsjb")]
 position = Vector2(0, 121)
 
-[node name="Laser" parent="MinigameArea" unique_id=859753925 instance=ExtResource("3_g44pf")]
-
-[node name="Cutting board" type="Node2D" parent="MinigameArea" unique_id=264996476]
-position = Vector2(0, 44)
-script = ExtResource("4_56ylu")
+[node name="Cutting board" parent="MinigameArea" unique_id=264996476 instance=ExtResource("2_54ocr")]
 fruit_scene = ExtResource("5_vwr26")
 
-[node name="BoardArea" type="ColorRect" parent="MinigameArea/Cutting board" unique_id=1639097384]
-visible = false
-offset_left = 16.0
-offset_top = -1.0
-offset_right = 224.0
-offset_bottom = 66.0
+[node name="Laser" parent="MinigameArea" unique_id=859753925 instance=ExtResource("3_g44pf")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=818522085]
-
-[node name="FruitsLeftLabel" type="Label" parent="CanvasLayer" unique_id=1844786514]
-offset_left = -39.0
-offset_right = 45.0
-offset_bottom = 13.0
-text = "FRUITS LEFT: 0"
-
-[node name="GroundedPercentLabel" type="Label" parent="CanvasLayer" unique_id=221819366]
-offset_left = 60.0
-offset_right = 144.0
-offset_bottom = 13.0
-text = "GROUNDED: 0%"
-
-[node name="RoundsLeftLabel" type="Label" parent="CanvasLayer" unique_id=383065369]
-offset_left = 146.0
-offset_right = 230.0
-offset_bottom = 13.0
-text = "ROUNDS LEFT: 5"
 
 [node name="TopBar" type="PanelContainer" parent="CanvasLayer" unique_id=678315497]
 custom_minimum_size = Vector2(0, 16)
@@ -73,7 +50,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5cuid")
 
 [node name="TopMessageLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=2025340051]
 layout_mode = 2
-text = "INSTRUCTIONS"
+text = "HIT SPACE TO START CHOPPING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -99,26 +76,26 @@ theme_override_constants/margin_bottom = 1
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="ShotsLeft" type="PanelContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer" unique_id=1587119426]
+[node name="ShotsFired" type="PanelContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer" unique_id=1587119426]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsLeft" unique_id=60871728]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsFired" unique_id=60871728]
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsLeft/MarginContainer" unique_id=816275196]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsFired/MarginContainer" unique_id=816275196]
 layout_mode = 2
 
-[node name="ShotsLeftIcon" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsLeft/MarginContainer/HBoxContainer" unique_id=786408039]
+[node name="ShotsFiredIcon" type="TextureRect" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsFired/MarginContainer/HBoxContainer" unique_id=786408039]
 layout_mode = 2
 texture = ExtResource("6_56ylu")
 
-[node name="ShotsLeftLabel" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsLeft/MarginContainer/HBoxContainer" unique_id=1624905940]
+[node name="ShotsFiredLabel" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/ShotsFired/MarginContainer/HBoxContainer" unique_id=1624905940]
 layout_mode = 2
-text = "5/5"
+text = "0"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
@@ -142,7 +119,7 @@ texture = ExtResource("7_luep2")
 
 [node name="Ingredient1Label" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient1/MarginContainer/HBoxContainer" unique_id=926733712]
 layout_mode = 2
-text = "100%"
+text = "0/5"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
@@ -165,7 +142,7 @@ texture = ExtResource("7_luep2")
 
 [node name="Ingredient2Label" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient2/MarginContainer/HBoxContainer" unique_id=431438619]
 layout_mode = 2
-text = "100%"
+text = "0/5"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
@@ -189,7 +166,7 @@ texture = ExtResource("7_luep2")
 
 [node name="Ingredient3Label" type="RichTextLabel" parent="CanvasLayer/BottomBar/MarginContainer/HBoxContainer/Ingredient3/MarginContainer/HBoxContainer" unique_id=1386864076]
 layout_mode = 2
-text = "100%"
+text = "0/5"
 fit_content = true
 autowrap_mode = 0
 vertical_alignment = 1
@@ -207,4 +184,4 @@ offset_right = 104.0
 offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.36862746, 1, 1)
+color = Color(0.60784316, 0.78039217, 0.85490197, 1)

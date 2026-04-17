@@ -1,11 +1,19 @@
 [gd_scene format=3 uid="uid://dy3gjpgwi5fym"]
 
 [ext_resource type="Script" uid="uid://cp6hy7b7li7ji" path="res://scenes/06_chopping_minigame/cutting_board.gd" id="1_y6xj3"]
+[ext_resource type="Texture2D" uid="uid://bqon14i8j6gr6" path="res://assets/images/chopping_board.png" id="2_34ulj"]
 
 [node name="Cutting board" type="Node2D" unique_id=264996476]
 script = ExtResource("1_y6xj3")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1724975833]
+z_index = -1
+texture = ExtResource("2_34ulj")
+centered = false
+
 [node name="BoardArea" type="ColorRect" parent="." unique_id=1639097384]
+visible = false
 offset_left = 16.0
+offset_top = 43.0
 offset_right = 224.0
-offset_bottom = 64.0
+offset_bottom = 110.0

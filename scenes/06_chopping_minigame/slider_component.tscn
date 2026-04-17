@@ -1,19 +1,38 @@
 [gd_scene format=3 uid="uid://b5s0ycwcoxyxa"]
 
 [ext_resource type="Script" uid="uid://ctpfl64b770b" path="res://scenes/06_chopping_minigame/slider_component.gd" id="1_oxp2n"]
+[ext_resource type="Texture2D" uid="uid://cdxtodr085qmn" path="res://assets/images/chopping_slider.png" id="2_5dijs"]
+[ext_resource type="Texture2D" uid="uid://dbuf62n2d7sge" path="res://assets/images/laser_pointer.png" id="3_vvg0d"]
+[ext_resource type="Texture2D" uid="uid://dvc7gvvipoqpm" path="res://assets/images/laser_pointer_firing.png" id="4_0opqh"]
 
 [node name="SliderComponent" type="Node2D" unique_id=1567326803]
 script = ExtResource("1_oxp2n")
 
 [node name="SliderRect" type="ColorRect" parent="." unique_id=1130140185]
+visible = false
 offset_right = 240.0
 offset_bottom = 16.0
 color = Color(0.5731688, 0.5731688, 0.57316875, 1)
 
 [node name="PositionRect" type="ColorRect" parent="." unique_id=1436365331]
-offset_top = 4.0
-offset_right = 8.0
-offset_bottom = 12.0
+visible = false
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
 
 [node name="Marker2D" type="Marker2D" parent="PositionRect" unique_id=183564943]
-position = Vector2(4, 4)
+position = Vector2(8, 8)
+
+[node name="LaserSliderBG" type="Sprite2D" parent="." unique_id=1799743731]
+texture = ExtResource("2_5dijs")
+centered = false
+offset = Vector2(-8, 0)
+
+[node name="LaserPointer" type="Sprite2D" parent="." unique_id=669546533]
+texture = ExtResource("3_vvg0d")
+centered = false
+
+[node name="LaserFiring" type="Sprite2D" parent="." unique_id=807557628]
+visible = false
+texture = ExtResource("4_0opqh")
+centered = false

@@ -32,16 +32,15 @@ func spawn_fruit() -> void:
 		print("Spawning ", picked_fruit)
 		new_fruit.sprite_full_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.MAIN_TEXTURE]
 		new_fruit.sprite_chopped_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.CHOPPED_TEXTURE]
-		new_fruit.sprite_powder_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.POWDER_TEXTURE]
 		new_fruit.grabbing_sprite_uri = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SINGLE_TEXTURE]
 		new_fruit.is_animated = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.IS_ANIMATED]
 		new_fruit.speed = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.SPEED]
 		new_fruit.path_complexity = GameData.FRUIT_DATA[picked_fruit][GameData.FruitParams.PATH_COMPLEXITY]
 		
-		new_fruit.position = Vector2(
-			int(randf_range(0, board_area.size.x)),
-			int(randf_range(0, board_area.size.y))
-		)
+		new_fruit.position = to_global(Vector2(
+			int(randf_range(board_area.position.x, board_area.position.x+board_area.size.x)),
+			int(randf_range(board_area.position.y, board_area.position.y+board_area.size.y))
+		))
 		add_child(new_fruit)
 		new_fruit.show()
 		GameData.total_fruits_amount += 1

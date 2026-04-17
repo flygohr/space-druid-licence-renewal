@@ -34,6 +34,9 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 	- Some fixes on the grabbing minigame, and polish
 	- No longer reparenting fruit but loading it at minigame start
 	- Working on the chopping minigame
+- 2026-04-18
+	- Idk if I'll make it in time
+	- Reduced scope of chopping minigame, can expand if enough time
 
 ### To-do:
 - [x] Make settings menu an autoload with a signal, too messy to keep track of scene
@@ -42,9 +45,13 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 	- [ ] Title art: gothic font for "Space Druid", regular font for "Licence Renewal"
 	- [x] Repeating space background
 	- [ ] Colored handles for sliders to match theme
-	- [ ] Chopped and ground fruit states
+	- [x] Chopped fruit states
+	- [ ] More opaque chopped fruits
 - [ ] Ditch the spacebar, make everything on click so it can work on mobile
 - [ ] Set up grade screen
 - [ ] Set up report card
+- [ ] Zapping animation for fruit in grabbing minigame
+- [ ] Different stages for the fruit in the chopping minigame:
+	- [ ] The original idea was to chop the fruit in different stages, each expanding the collision shape so it would have been easier to get multiple fruit in a laser shot, but also more granular to get a 100% completion
 - [ ] Non-critical:
 	- [ ] Some button remains highlighted the first time I call the options menu in, idk why. Probably hovering something, and not recalculating outline size

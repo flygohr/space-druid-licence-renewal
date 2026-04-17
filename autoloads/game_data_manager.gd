@@ -33,8 +33,7 @@ enum FruitParams {MAIN_TEXTURE, CHOPPED_TEXTURE, POWDER_TEXTURE, SINGLE_TEXTURE,
 const FRUIT_DATA: Dictionary = {
 	KEY_KIDNEY_GRAPES: {
 		FruitParams.MAIN_TEXTURE: "uid://cm1nj60d1c5rv",
-		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
-		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.CHOPPED_TEXTURE: "uid://cjybmdxr41l0x",
 		FruitParams.SINGLE_TEXTURE: "uid://cm1nj60d1c5rv",
 		FruitParams.IS_ANIMATED: false,
 		FruitParams.SPEED: 25,
@@ -42,8 +41,7 @@ const FRUIT_DATA: Dictionary = {
 	},
 	KEY_ALL_SEEING_CHERRY: {
 		FruitParams.MAIN_TEXTURE: "uid://bphmskpwbpnsv",
-		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
-		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.CHOPPED_TEXTURE: "uid://bnkk074p0dhop",
 		FruitParams.SINGLE_TEXTURE: "uid://b5jttb4gpdhq4",
 		FruitParams.IS_ANIMATED: true,
 		FruitParams.SPEED: 15,
@@ -51,8 +49,7 @@ const FRUIT_DATA: Dictionary = {
 	},
 	KEY_COSMIC_WATERMELON: {
 		FruitParams.MAIN_TEXTURE: "uid://caeunebcv8sgj",
-		FruitParams.CHOPPED_TEXTURE: "uid://cm1nj60d1c5rv",
-		FruitParams.POWDER_TEXTURE: "uid://cm1nj60d1c5rv",
+		FruitParams.CHOPPED_TEXTURE: "uid://c80c8wbwubh8d",
 		FruitParams.SINGLE_TEXTURE: "uid://cnju17kj1mg17",
 		FruitParams.IS_ANIMATED: true,
 		FruitParams.SPEED: 15,

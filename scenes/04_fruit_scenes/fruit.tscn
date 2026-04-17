@@ -8,12 +8,6 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6dk3"]
 radius = 16.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_luid3"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f6dk3"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
 [node name="Fruit" type="Node2D" unique_id=328631459]
 script = ExtResource("1_luid3")
 
@@ -39,6 +33,7 @@ shape = SubResource("CircleShape2D_f6dk3")
 debug_color = Color(0.57362586, 0.5560909, 3.85046e-07, 0.41960785)
 
 [node name="GrabbingCollision" type="TextureButton" parent="FruitShape/CollisionChecks" unique_id=1827253192]
+visible = false
 offset_left = -8.0
 offset_top = -8.0
 offset_right = 8.0
@@ -51,14 +46,6 @@ offset_bottom = 8.0
 [node name="SpriteChopped" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1934207790]
 visible = false
 modulate = Color(1, 1, 1, 0.49803922)
-scale = Vector2(0.25, 0.25)
-texture = SubResource("CompressedTexture2D_luid3")
-
-[node name="SpritePowder" type="Sprite2D" parent="FruitShape/Sprites" unique_id=1089882609]
-visible = false
-modulate = Color(1, 1, 1, 0.24705882)
-scale = Vector2(0.375, 0.375)
-texture = SubResource("CompressedTexture2D_f6dk3")
 
 [node name="Timer" type="Timer" parent="." unique_id=1867958770]
 wait_time = 2.0
