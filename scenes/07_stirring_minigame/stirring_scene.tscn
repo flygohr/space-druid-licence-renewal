@@ -2,17 +2,82 @@
 
 [ext_resource type="Script" uid="uid://2n1bmf4e03hw" path="res://scenes/07_stirring_minigame/stirring_scene.gd" id="1_24vjm"]
 [ext_resource type="PackedScene" uid="uid://bqj261sssx85t" path="res://scenes/07_stirring_minigame/pot.tscn" id="2_4gllk"]
+[ext_resource type="PackedScene" uid="uid://dnvvnhcf252el" path="res://scenes/space_background.tscn" id="2_sg5pe"]
 [ext_resource type="PackedScene" uid="uid://pcxlkctbxhxq" path="res://scenes/07_stirring_minigame/rocket.tscn" id="3_gbpbl"]
+[ext_resource type="Texture2D" uid="uid://c1cby1ws1j8ep" path="res://assets/images/circular_arrow.png" id="4_wx3vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qdge"]
+bg_color = Color(0.87058824, 0.79607844, 0.62352943, 1)
+border_width_bottom = 1
+border_color = Color(0.078431375, 0.11372549, 0.12941177, 1)
 
 [node name="StirringScene" type="Node2D" unique_id=1079126123]
 script = ExtResource("1_24vjm")
 
-[node name="Pot" parent="." unique_id=1071121286 instance=ExtResource("2_4gllk")]
+[node name="SpaceBackground" parent="." unique_id=2146281425 instance=ExtResource("2_sg5pe")]
+
+[node name="MinigameScene" type="Node2D" parent="." unique_id=1910657523]
+
+[node name="Rocket" parent="MinigameScene" unique_id=1586514497 instance=ExtResource("3_gbpbl")]
+
+[node name="Pot" parent="MinigameScene" unique_id=1071121286 instance=ExtResource("2_4gllk")]
 position = Vector2(208, 96)
 
-[node name="Rocket" parent="." unique_id=1586514497 instance=ExtResource("3_gbpbl")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1349839576]
 
-[node name="LapsLabel" type="Label" parent="." unique_id=1342241619]
-offset_right = 42.0
-offset_bottom = 13.0
-text = "STIRS: 0"
+[node name="TopBar" type="PanelContainer" parent="CanvasLayer" unique_id=491614600]
+custom_minimum_size = Vector2(0, 16)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 14.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5qdge")
+
+[node name="TopMessageLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=2128282267]
+layout_mode = 2
+text = "HOLD SPACE TO FIRE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TopBar" unique_id=1554208162]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="LapsContainer" type="PanelContainer" parent="CanvasLayer/TopBar/MarginContainer" unique_id=1349847689]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TopBar/MarginContainer/LapsContainer" unique_id=85888989]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TopBar/MarginContainer/LapsContainer/MarginContainer" unique_id=1840489338]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TopBar/MarginContainer/LapsContainer/MarginContainer/HBoxContainer" unique_id=1807497561]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/TopBar/MarginContainer/LapsContainer/MarginContainer/HBoxContainer/PanelContainer" unique_id=680829733]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TopBar/MarginContainer/LapsContainer/MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=307974803]
+layout_mode = 2
+texture = ExtResource("4_wx3vs")
+stretch_mode = 2
+
+[node name="LapsLabel" type="Label" parent="CanvasLayer/TopBar/MarginContainer/LapsContainer/MarginContainer/HBoxContainer" unique_id=1342241619]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+text = "0"

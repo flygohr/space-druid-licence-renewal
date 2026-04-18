@@ -54,6 +54,6 @@ Pitch: Combine exotic ingredients in absurd ways to renew your Space Druid Licen
 - [ ] Different stages for the fruit in the chopping minigame:
 	- [ ] The original idea was to chop the fruit in different stages, each expanding the collision shape so it would have been easier to get multiple fruit in a laser shot, but also more granular to get a 100% completion
 - [ ] Non-critical:
-	- [ ] Transitions are a bit janky
+	- [ ] Transitions are a bit janky, i need to transition to a scene and do the recap at the beginning of the new one to minimize transitions
 	- [ ] Bottom bar sprites loading delay
 	- [ ] Some button remains highlighted the first time I call the options menu in, idk why. Probably hovering something, and not recalculating outline size

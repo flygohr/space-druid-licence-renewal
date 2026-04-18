@@ -1,31 +1,169 @@
 [gd_scene format=3 uid="uid://pcxlkctbxhxq"]
 
 [ext_resource type="Script" uid="uid://du0ys55cxljmx" path="res://scenes/07_stirring_minigame/rocket.gd" id="1_k1m8p"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_50rgb"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[ext_resource type="Texture2D" uid="uid://l4oqn4uc2gkt" path="res://assets/images/flame_full.png" id="2_hepoc"]
+[ext_resource type="Texture2D" uid="uid://cslnvuhxj6ni7" path="res://assets/images/flame_half.png" id="3_dw4e3"]
+[ext_resource type="Texture2D" uid="uid://dugiyjy0b1t6a" path="res://assets/images/flame_begin.png" id="4_pcd4y"]
+[ext_resource type="Texture2D" uid="uid://bnp0bnftcswc" path="res://assets/images/flame_empty.png" id="5_gtdlt"]
+[ext_resource type="Theme" uid="uid://d2s1eqi0btoeb" path="res://assets/themes/main_theme.tres" id="6_pcd4y"]
+[ext_resource type="Script" uid="uid://cnjyvj5ej8m1f" path="res://scenes/07_stirring_minigame/fuel.gd" id="7_gtdlt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50rgb"]
-size = Vector2(96, 116.36364)
+size = Vector2(64, 144.18182)
+
+[sub_resource type="Animation" id="Animation_dw4e3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlameBeginSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlameHalfSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlameFullSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlameEmptySprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pcd4y"]
+resource_name = "firing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlameBeginSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlameHalfSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlameFullSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlameEmptySprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, false, false, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gtdlt"]
+_data = {
+&"RESET": SubResource("Animation_dw4e3"),
+&"firing": SubResource("Animation_pcd4y")
+}
 
 [node name="Rocket" type="Node2D" unique_id=1586514497]
 script = ExtResource("1_k1m8p")
 
-[node name="FlameSprite" type="Sprite2D" parent="." unique_id=18421476]
-modulate = Color(0.87058824, 0.5411765, 0, 0.56078434)
-position = Vector2(72, 88)
-scale = Vector2(0.375, 1.1249999)
-texture = SubResource("CompressedTexture2D_50rgb")
+[node name="FlameEmptySprite" type="Sprite2D" parent="." unique_id=87167610]
+visible = false
+position = Vector2(32, 0)
+texture = ExtResource("5_gtdlt")
+centered = false
 
-[node name="Area2D" type="Area2D" parent="FlameSprite" unique_id=1255122482 groups=["RocketFire"]]
+[node name="FlameBeginSprite" type="Sprite2D" parent="." unique_id=250408977]
+position = Vector2(32, 0)
+texture = ExtResource("4_pcd4y")
+centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlameSprite/Area2D" unique_id=1504387517]
+[node name="FlameHalfSprite" type="Sprite2D" parent="." unique_id=1148173772]
+position = Vector2(32, 0)
+texture = ExtResource("3_dw4e3")
+centered = false
+
+[node name="FlameFullSprite" type="Sprite2D" parent="." unique_id=18421476]
+position = Vector2(32, 0)
+texture = ExtResource("2_hepoc")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1255122482 groups=["RocketFire"]]
+position = Vector2(32, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1504387517]
+position = Vector2(32, 88.09091)
 shape = SubResource("RectangleShape2D_50rgb")
 
 [node name="Fuel" type="ProgressBar" parent="." unique_id=551027760]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 32.0
-offset_bottom = 160.0
+offset_left = -1.0
+offset_top = 27.0
+offset_right = 15.0
+offset_bottom = 161.0
+theme = ExtResource("6_pcd4y")
 value = 100.0
 fill_mode = 3
+show_percentage = false
+script = ExtResource("7_gtdlt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=50536600]
+libraries/ = SubResource("AnimationLibrary_gtdlt")
+speed_scale = 3.0
+
+[connection signal="value_changed" from="Fuel" to="Fuel" method="_on_value_changed"]

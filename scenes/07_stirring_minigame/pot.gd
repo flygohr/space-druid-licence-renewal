@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var ladle_and_liquid: Node2D = $LadleAndLiquid
+
 var impact: float = 0.4
 var velocity: float
 var min_velocity: float = 0.01
@@ -28,8 +30,8 @@ func _process(delta: float) -> void:
 			velocity = clampf(velocity - (impact * delta), min_velocity, max_velocity)
 			rotate_amt -= velocity * (impact * delta)
 	rotate_amt = clampf(rotate_amt, min_rotation, max_rotation)
-	rotate(rotate_amt)
-	laps = int(rotation_degrees/360)
+	ladle_and_liquid.rotate(rotate_amt)
+	laps = int(ladle_and_liquid.rotation_degrees/360)
 
 func _on_ladle_collision_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("RocketFire"):

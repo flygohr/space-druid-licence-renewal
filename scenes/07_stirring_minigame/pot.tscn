@@ -1,33 +1,37 @@
 [gd_scene format=3 uid="uid://bqj261sssx85t"]
 
 [ext_resource type="Script" uid="uid://b2of7tsnh0hdg" path="res://scenes/07_stirring_minigame/pot.gd" id="1_1qkew"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5iwio"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1qkew"]
-load_path = "res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+[ext_resource type="Texture2D" uid="uid://cyuwtm7hu3vq2" path="res://assets/images/cauldron.png" id="2_7awiv"]
+[ext_resource type="Texture2D" uid="uid://cnagn80klwa66" path="res://assets/images/liquid.png" id="3_5unov"]
+[ext_resource type="Texture2D" uid="uid://dmfhcpypxgkuh" path="res://assets/images/ladle.png" id="4_q44ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5iwio"]
-size = Vector2(138, 20)
+size = Vector2(150.26044, 21.98234)
 
 [node name="Pot" type="Node2D" unique_id=1071121286]
 script = ExtResource("1_1qkew")
 
 [node name="PotSprite" type="Sprite2D" parent="." unique_id=1243578868]
-scale = Vector2(0.99999994, 0.99999994)
-texture = SubResource("CompressedTexture2D_5iwio")
+texture = ExtResource("2_7awiv")
 
-[node name="LadleSprite" type="Sprite2D" parent="." unique_id=310400166]
-position = Vector2(-56.000004, 0)
-scale = Vector2(1.125, 0.125)
-texture = SubResource("CompressedTexture2D_1qkew")
+[node name="LadleAndLiquid" type="Node2D" parent="." unique_id=1818878734]
 
-[node name="LadleCollisionArea" type="Area2D" parent="." unique_id=1909204441]
+[node name="LiquidSprite" type="Sprite2D" parent="LadleAndLiquid" unique_id=1931602677]
+modulate = Color(0.4392157, 0.74509805, 0.63529414, 1)
+texture = ExtResource("3_5unov")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LadleCollisionArea" unique_id=1451658342]
-position = Vector2(-59, 0)
+[node name="LadleSprite" type="Sprite2D" parent="LadleAndLiquid" unique_id=310400166]
+position = Vector2(-85.99999, -6)
+rotation = -1.5127293
+texture = ExtResource("4_q44ls")
+
+[node name="LadleCollisionArea" type="Area2D" parent="LadleAndLiquid" unique_id=1909204441]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LadleAndLiquid/LadleCollisionArea" unique_id=1451658342]
+position = Vector2(-95.932556, -19.677835)
+rotation = 0.054258477
+scale = Vector2(0.9999999, 0.9999999)
 shape = SubResource("RectangleShape2D_5iwio")
 
-[connection signal="area_entered" from="LadleCollisionArea" to="." method="_on_ladle_collision_area_area_entered"]
-[connection signal="area_exited" from="LadleCollisionArea" to="." method="_on_ladle_collision_area_area_exited"]
+[connection signal="area_entered" from="LadleAndLiquid/LadleCollisionArea" to="." method="_on_ladle_collision_area_area_entered"]
+[connection signal="area_exited" from="LadleAndLiquid/LadleCollisionArea" to="." method="_on_ladle_collision_area_area_exited"]
