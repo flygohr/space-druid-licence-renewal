@@ -46,7 +46,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_5qdge")
 
 [node name="TopMessageLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=2128282267]
 layout_mode = 2
-text = "HOLD SPACE TO FIRE"
+text = "CLICK TO START"
 horizontal_alignment = 1
 vertical_alignment = 1
 

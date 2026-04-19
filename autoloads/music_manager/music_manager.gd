@@ -7,7 +7,11 @@ extends Node
 
 @onready var music_player: AudioStreamPlayer2D = $MusicPlayer
 @onready var sfx_player: AudioStreamPlayer2D = $SFXPlayer
+@onready var click_sfx: AudioStreamPlayer2D = $ClickSFX
 
 func _ready() -> void:
 	music_player.play()
 	sfx_player.play()
+
+func play_click() -> void:
+	click_sfx.play()

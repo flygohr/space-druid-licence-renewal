@@ -144,7 +144,7 @@ theme_override_constants/margin_right = 4
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 8
-text = "FILE A RECOURSE"
+text = "RESTART"
 
 [node name="ButtonEffectsComponent" type="Node" parent="CanvasLayer/MarginContainer/VBoxContainer/MarginContainer/ContinueButton" unique_id=981722339]
 script = ExtResource("4_xru5d")

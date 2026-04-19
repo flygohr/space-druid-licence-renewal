@@ -15,13 +15,15 @@ extends Node2D
 @onready var ingredient_3_name_label: RichTextLabel = $CanvasLayer/MarginContainer/VBoxContainer/NinePatchRect2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/Ingredient_3_Name
 
 func _ready() -> void:
+	GameData.initiate_load_game_data()
 	var current_restarts: int = int(GameData.current[GameData.KEY_RESTARTS])
-	current_restarts += 1
 	GameData.current[GameData.KEY_RESTARTS] = current_restarts
 	
 	if GameData.current[GameData.KEY_IS_NEW_GAME] == true:
 		play_tutorial()
-	else: play_recourse()
+	else: 
+		play_recourse()
+		current_restarts += 1
 		
 	assignment_label.text = str(
 		"Assignment #",

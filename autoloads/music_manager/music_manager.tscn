@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://m6ppdobe31o3"]
 
 [ext_resource type="Script" uid="uid://c2ugdc8g1ddsw" path="res://autoloads/music_manager/music_manager.gd" id="1_tn5dr"]
+[ext_resource type="AudioStream" uid="uid://c5mqaxrfrftmv" path="res://audio/SFX/478196__jonnyruss01__click_2.wav" id="2_034fw"]
 
 [node name="MusicManager" type="Node" unique_id=2088791662]
 process_mode = 3
@@ -12,4 +13,8 @@ bus = &"Music"
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=566597615]
 autoplay = true
+bus = &"SFX"
+
+[node name="ClickSFX" type="AudioStreamPlayer2D" parent="." unique_id=284684655]
+stream = ExtResource("2_034fw")
 bus = &"SFX"

@@ -12,21 +12,23 @@ class_name ButtonEffectsComponent
 
 var tween: Tween
 #TODO: learn how to use shaders in the future 
-var background_topside: ColorRect
-var background_rightside: ColorRect
-var background_bottomside: ColorRect
-var background_leftside: ColorRect
+var background_topside: ColorRect = ColorRect.new()
+var background_rightside: ColorRect = ColorRect.new()
+var background_bottomside: ColorRect = ColorRect.new()
+var background_leftside: ColorRect = ColorRect.new()
 
 func _ready() -> void:
+	
 	button.mouse_entered.connect(_on_mouse_hovered.bind(true))
 	button.mouse_exited.connect(_on_mouse_hovered.bind(false))
+	button.pressed.connect(_on_mouse_click)
 	
 	background_topside  = ColorRect.new()
 	background_rightside  = ColorRect.new()
 	background_bottomside  = ColorRect.new()
 	background_leftside  = ColorRect.new()
 	
-	recalculate_outline_size(background_topside, background_rightside, background_bottomside, background_leftside)
+	recalculate_outline_size()
 	
 	background_topside.color = Color(1.0, 1.0, 1.0, 0.0)
 	background_rightside.color = Color(1.0, 1.0, 1.0, 0.0)
@@ -38,24 +40,31 @@ func _ready() -> void:
 	button.add_child.call_deferred(background_bottomside)
 	button.add_child.call_deferred(background_leftside)
 	
+func _process(_delta: float) -> void:
+	recalculate_outline_size()
+
 func _on_mouse_hovered(hovered: bool) -> void:
 	reset_tween()
-	recalculate_outline_size(background_topside, background_rightside, background_bottomside, background_leftside)
+	recalculate_outline_size()
 	tween.tween_property(background_topside, "color", outline_color if hovered else Color(0.0, 0.0, 0.0, 0.0), animation_duration)
 	tween.tween_property(background_rightside, "color", outline_color if hovered else Color(0.0, 0.0, 0.0, 0.0), animation_duration)
 	tween.tween_property(background_bottomside, "color", outline_color if hovered else Color(0.0, 0.0, 0.0, 0.0), animation_duration)
 	tween.tween_property(background_leftside, "color", outline_color if hovered else Color(0.0, 0.0, 0.0, 0.0), animation_duration)
 	
-func recalculate_outline_size(topside, rightside, bottomside, leftside) -> void:
-	topside.position = Vector2(-1, -1)
-	rightside.position = Vector2(button.size.x, -1)
-	bottomside.position = Vector2(-1, button.size.y)
-	leftside.position = Vector2(-1, -1)
+func _on_mouse_click() -> void:
+	MusicManager.play_click()
+
+func recalculate_outline_size() -> void:
 	
-	topside.size = Vector2(button.size.x + 2, 1)
-	rightside.size = Vector2(1, button.size.y + 2)
-	bottomside.size = Vector2(button.size.x + 2, 1)
-	leftside.size = Vector2(1, button.size.y + 2)
+	background_topside.position = Vector2(-1, -1)
+	background_rightside.position = Vector2(button.size.x, -1)
+	background_bottomside.position = Vector2(-1, button.size.y)
+	background_leftside.position = Vector2(-1, -1)
+	
+	background_topside.size = Vector2(button.size.x + 2, 1)
+	background_rightside.size = Vector2(1, button.size.y + 2)
+	background_bottomside.size = Vector2(button.size.x + 2, 1)
+	background_leftside.size = Vector2(1, button.size.y + 2)
 
 func reset_tween() -> void:
 	if tween:

@@ -21,7 +21,26 @@ func _ready() -> void:
 	var zapping_grade_string: String = match_grade(zapping_grade_int)
 	zapping_grade.text = zapping_grade_string
 	
-	#TODO: continue updating stats
+	chopping_stats.text = str(
+		"LASERS FIRED: ",
+		GameData.current[GameData.KEY_SHOTS_FIRED]
+	)
+	var chopping_grade_int: int = GameData.calculate_chopping_grade()
+	var chopping_grade_string: String = match_grade(chopping_grade_int)
+	chopping_grade.text = chopping_grade_string
+	
+	stirring_stats.text = str(
+		"LADLE SPINS: ",
+		GameData.current[GameData.KEY_REVOLUTIONS_DONE]
+	)
+	var stirring_grade_int: int = GameData.calculate_stirring_grade()
+	var stirring_grade_string: String = match_grade(stirring_grade_int)
+	stirring_grade.text = stirring_grade_string
+	
+	if GameData.calculate_final_grade() == "F":
+		result_label.text = "LICENCE RENEWAL FAILED"
+	else:
+		result_label.text = "LICENCE RENEWED"
 
 func _on_continue_button_pressed() -> void:
 	ScenesManager.load_scene(ScenesConstants.SCENE_PATHS[ScenesConstants.KEY_ASSIGNMENT_SCREEN])
